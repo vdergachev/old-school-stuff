@@ -17,6 +17,13 @@ Old stuff
  Моя попытка разработать менеджер плей листов для IPTV
  09.2016
  
+## enovia-monitor-emo
+### TechStack
+  Java/SpringBoot/Mysql
+### Description 
+ Enovia монитор, сбор данных о активности пользователей.
+ 26.11.2015
+ 
 ## epic-stuff
 ### TechStack
   FoxPro ???
@@ -46,6 +53,13 @@ Old stuff
  Еще одно тестовое для загадочной питерской конторы с абривиатурой SW, необходимо было написать аналог линуксового tar.  
  05.12.2011
  
+## revo-test-app
+### TechStack
+  Java/Spring
+### Description 
+ Тестовое задание для компании revo, судя по всему я забил на эту компанию.
+ 15.12.2015
+ 
 ## fasten-test-app
 ### TechStack
   Java
@@ -59,3 +73,10 @@ Old stuff
 ### Description 
  Тестовое задание для компании RiskMatch, выполнено успешно.
  06.11.2017
+ 
+## playtech-test-app
+### TechStack
+  Java
+### Description 
+ Тестовое задание для компании playtech.
+ 11.02.2018

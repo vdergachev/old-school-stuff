@@ -1,0 +1,26 @@
+group 'io.playtech.spliturl'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes(
+                'Manifest-Version' : '1.0',
+                'Main-Class': 'io.playtech.spliturl.SplitUrl'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies{
+    testCompile('junit:junit:4.12')
+    testCompile('pl.pragmatists:JUnitParams:1.1.1')
+    testCompile('org.hamcrest:hamcrest-all:1.3')
+}
