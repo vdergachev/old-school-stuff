@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://passCaption"
+        class="ru.glavkniga.gklients.gui.client.ClientPasswdChange"
+        datasource="clientDs"
+        focusComponent="passEnter"
+        messagesPack="ru.glavkniga.gklients.gui.client">
+    <dsContext>
+        <datasource id="clientDs"
+                    class="ru.glavkniga.gklients.entity.Client"
+                    view="_local"/>
+    </dsContext>
+    <layout spacing="true">
+        <grid spacing="true">
+            <columns>
+                <column></column>
+                <column></column>
+                <column></column>
+            </columns>
+            <rows>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           id="passLabel1"
+                           value="msg://passLabel1cap"/>
+                    <textField align="MIDDLE_LEFT"
+                               id="passEnter"
+                               required="true"
+                               requiredMessage="msg://passEnterMsg"/>
+                    <button align="MIDDLE_LEFT"
+                            id="generateBtn"
+                            caption="msg://generateBtnCap"
+                            invoke="onGenerateBtnClick"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           id="passLabel2"
+                           value="msg://passLabel2cap"/>
+                    <textField align="MIDDLE_LEFT"
+                               id="passRetype"
+                               required="true"
+                               requiredMessage="msg://passEnterMsg"/>
+                </row>
+            </rows>
+        </grid>
+        <frame screen="editWindowActions"/>
+    </layout>
+</window>

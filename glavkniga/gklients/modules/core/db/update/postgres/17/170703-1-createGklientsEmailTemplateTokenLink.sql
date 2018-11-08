@@ -1,0 +1,5 @@
+create table GKLIENTS_EMAIL_TEMPLATE_TOKEN_LINK (
+    TOKEN_ID uuid,
+    EMAIL_TEMPLATE_ID uuid,
+    primary key (TOKEN_ID, EMAIL_TEMPLATE_ID)
+);

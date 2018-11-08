@@ -1,0 +1,30 @@
+@import "../halo/halo";
+
+/* Define your theme modifications inside next mixin */
+@mixin halo-ext {
+  @include halo;
+  .cell-true,  
+  .cell-false {  
+  color: transparent;  
+  height: round($v-unit-size/2);  
+  line-height: round($v-unit-size/2);  
+  width: round($v-unit-size/2);  
+  font-size: 0;  
+  &:before {  
+    color: $v-font-color;  
+    font-size: $v-font-size;  
+    font-family: FontAwesome;  
+  }  
+}  
+.cell-true {  
+  &:before {  
+    content: "\f046";  
+  }  
+}  
+.cell-false {  
+  &:before {  
+    content: "\f096";  
+  }  
+}  
+}
+

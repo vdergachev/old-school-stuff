@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.mailingstatistics.MailingStatisticsEdit"
+        datasource="mailingStatisticsDs"
+        focusComponent="fieldGroup1"
+        messagesPack="ru.glavkniga.gklients.gui.mailingstatistics">
+    <dsContext>
+        <datasource id="mailingStatisticsDs"
+                    class="ru.glavkniga.gklients.entity.MailingStatistics"
+                    view="mailingStatistics-browse"/>
+        <collectionDatasource id="onetimeMailingsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.OnetimeMailing"
+                              view="onetimeMailing-withClient">
+            <query>
+                <![CDATA[select e from gklients$OnetimeMailing e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="failedEmailsDs"
+                              class="ru.glavkniga.gklients.entity.FailedEmail"
+                              view="failedEmails-withClient">
+            <query>
+                <![CDATA[select e from gklients$FailedEmail e
+where e.mailingStatistics.id = :ds$mailingStatisticsDs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="410"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup2"
+                    datasource="mailingStatisticsDs"
+                    editable="false"
+                    enable="false"
+                    width="360px">
+            <column width="305px">
+                <field optionsDatasource="onetimeMailingsDs"
+                       property="onetimeMailing"/>
+            </column>
+        </fieldGroup>
+        <fieldGroup id="fieldGroup1"
+                    datasource="mailingStatisticsDs"
+                    editable="false"
+                    enable="false"
+                    width="360px">
+            <column width="60px">
+                <field property="planned"/>
+                <field property="sending"/>
+            </column>
+            <column width="60px">
+                <field property="completed"/>
+                <field property="failed"/>
+            </column>
+        </fieldGroup>
+        <buttonsPanel id="panel1">
+            <button id="btnUpdate"
+                    caption="msg://btnUpdateCap"
+                    invoke="onBtnUpdateClick"/>
+        </buttonsPanel>
+        <table id="failedEmailsTable"
+               height="305px"
+               width="370px">
+            <columns>
+                <column id="client"
+                        caption="msg://failedEmailsCap"/>
+            </columns>
+            <rows datasource="failedEmailsDs"/>
+        </table>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,1 @@
+INSERT INTO sys_scheduled_task VALUES ('d892fc76-dcfe-c4ae-2f1f-f2f0fc12f5a6', '2017-07-08 22:57:00.163', 'admin', '2017-07-08 22:57:00.163', NULL, NULL, NULL, 'B', NULL, NULL, 'gklients_OnetimeMailingSender', 'send', '<?xml version="1.0" encoding="UTF-8"?><params/>', 'admin', NULL, NULL, 60, NULL, NULL, NULL, NULL, NULL, true, true, NULL, NULL, NULL, NULL, 'P');

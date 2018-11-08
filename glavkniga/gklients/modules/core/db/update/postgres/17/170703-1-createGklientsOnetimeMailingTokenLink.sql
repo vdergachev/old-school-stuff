@@ -1,0 +1,5 @@
+create table GKLIENTS_ONETIME_MAILING_TOKEN_LINK (
+    TOKEN_ID uuid,
+    ONETIME_MAILING_ID uuid,
+    primary key (TOKEN_ID, ONETIME_MAILING_ID)
+);

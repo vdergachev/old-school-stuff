@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.mailingstatistics.MailingStatisticsBrowse"
+        focusComponent="mailingStatisticsesTable"
+        lookupComponent="mailingStatisticsesTable"
+        messagesPack="ru.glavkniga.gklients.gui.mailingstatistics">
+    <dsContext>
+        <groupDatasource id="mailingStatisticsesDs"
+                         class="ru.glavkniga.gklients.entity.MailingStatistics"
+                         view="mailingStatistics-browse">
+            <query>
+                <![CDATA[select e from gklients$MailingStatistics e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="mailingStatisticsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="mailingStatisticsesTable"
+                datasource="mailingStatisticsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="mailingStatisticsesTable"
+                    width="100%">
+            <actions>
+                <action id="refresh"/>
+                <action id="excel"/>
+                <action id="edit"/>
+            </actions>
+            <columns>
+                <column id="onetimeMailing"/>
+                <column id="planned"/>
+                <column id="sending"/>
+                <column id="completed"/>
+                <column id="failed"/>
+            </columns>
+            <rows datasource="mailingStatisticsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="editBtn"
+                        action="mailingStatisticsesTable.edit"
+                        caption="msg://editBtnCap"/>
+                <button id="refreshBtn"
+                        action="mailingStatisticsesTable.refresh"/>
+                <button id="excelBtn"
+                        action="mailingStatisticsesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<metadata xmlns="http://schemas.haulmont.com/cuba/metadata.xsd">
+    <metadata-model namespace="gklients"
+                    root-package="ru.glavkniga.gklients">
+        <class>ru.glavkniga.gklients.entity.ClientServiceAgregator</class>
+        <class>ru.glavkniga.gklients.crudentity.ElverAccess</class>
+        <class>ru.glavkniga.gklients.crudentity.SeminarAccess</class>
+        <class>ru.glavkniga.gklients.crudentity.SituationAccess</class>
+        <class>ru.glavkniga.gklients.crudentity.Regkey</class>
+        <class>ru.glavkniga.gklients.crudentity.DailyNewsDistribution</class>
+        <class>ru.glavkniga.gklients.crudentity.DateException</class>
+        <class>ru.glavkniga.gklients.crudentity.SiteExchange</class>
+    </metadata-model>
+</metadata>

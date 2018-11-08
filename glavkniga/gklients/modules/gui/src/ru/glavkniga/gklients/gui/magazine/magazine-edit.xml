@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.magazine.MagazineEdit"
+        datasource="magazineDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.magazine">
+    <dsContext>
+        <datasource id="magazineDs"
+                    class="ru.glavkniga.gklients.entity.Magazine"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="magazineDs">
+            <column width="250px">
+                <field id="magazineName"/>
+                <field id="magazineAbb"/>
+                <field id="magazineID"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

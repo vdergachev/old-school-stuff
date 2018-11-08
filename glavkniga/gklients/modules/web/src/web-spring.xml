@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task">
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="ru.glavkniga.gklients"/>
+    <!-- Background Tasks -->
+    <!--<bean id="backgroundWorkerScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">-->
+    <!--<property name="daemon" value="true"/>-->
+    <!--<property name="poolSize" value="1"/>-->
+    <!--</bean>-->
+    <!--<task:scheduled-tasks scheduler="backgroundWorkerScheduler">-->
+    <!--<task:scheduled ref="cuba_BackgroundWorker_WatchDog" method="cleanupTasks" fixed-delay="2000"/>-->
+    <!--</task:scheduled-tasks>-->
+    <bean class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector"
+                  ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="gklients_GeneratorService"
+                       value="ru.glavkniga.gklients.service.GeneratorService"/>
+                <entry key="gklients_EmailerService"
+                       value="ru.glavkniga.gklients.service.EmailerService"/>
+                <entry key="gklients_CsvParserService"
+                       value="ru.glavkniga.gklients.service.CsvParserService"/>
+                <entry key="gklients_DefineIssuesRangeService"
+                       value="ru.glavkniga.gklients.service.DefineIssuesRangeService"/>
+                <entry key="gklients_GKExchangeService"
+                       value="ru.glavkniga.gklients.service.GKExchangeService"/>
+                <entry key="gklients_ServiceAggregatorService"
+                       value="ru.glavkniga.gklients.service.ServiceAggregatorService"/>
+                <entry key="gklients_MassMailingService"
+                       value="ru.glavkniga.gklients.service.MassMailingService"/>
+                <entry key="gklients_DateTimeService"
+                       value="ru.glavkniga.gklients.service.DateTimeService"/>
+                <entry key="gklients_TemplateProcessService"
+                       value="ru.glavkniga.gklients.service.TemplateProcessService"/>
+                <entry key="gklients_MailingStatisticService"
+                       value="ru.glavkniga.gklients.service.MailingStatisticService"/>
+                <entry key="gklients_NewsTemplateProcessorService"
+                       value="ru.glavkniga.gklients.service.NewsTemplateProcessorService"/>
+                <entry key="gklients_GkNewsProviderService"
+                       value="ru.glavkniga.gklients.service.GkNewsProviderService"/>
+                <entry key="gklients_SiteExchangeService"
+                       value="ru.glavkniga.gklients.service.SiteExchangeService"/>
+                <entry key="gklients_GKExchangeProcessorService"
+                       value="ru.glavkniga.gklients.service.GKExchangeProcessorService"/>
+                <entry key="gklients_SiteFileUploadService"
+                       value="ru.glavkniga.gklients.service.SiteFileUploadService"/>
+            </map>
+        </property>
+    </bean>
+    <bean class="ru.glavkniga.gklients.web.App"
+          name="cuba_App"
+          scope="prototype"/>
+</beans>

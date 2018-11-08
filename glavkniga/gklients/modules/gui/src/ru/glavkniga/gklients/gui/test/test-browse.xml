@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.test.TestBrowse"
+        focusComponent="testsTable"
+        lookupComponent="testsTable"
+        messagesPack="ru.glavkniga.gklients.gui.test">
+    <dsContext>
+        <datasource id="testDs"
+                    class="ru.glavkniga.gklients.entity.Test"
+                    view="_local"/>
+        <collectionDatasource id="testsDs"
+                              class="ru.glavkniga.gklients.entity.Test"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Test e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="testsTable">
+        <filter id="filter"
+                applyTo="testsTable"
+                datasource="testsDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <table id="testsTable"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="testId"/>
+                <column id="testName"/>
+            </columns>
+            <rows datasource="testsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="removeBtn"
+                        action="testsTable.remove"/>
+                <button id="btGetFromWebsite"
+                        caption="msg://btGetFromWebsiteCap"
+                        invoke="onBtGetFromWebsiteClick"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

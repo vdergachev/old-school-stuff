@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.emailtemplate.EmailTemplateEdit"
+        datasource="emailTemplateDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.emailtemplate">
+    <dsContext>
+        <datasource id="emailTemplateDs"
+                    class="ru.glavkniga.gklients.entity.EmailTemplate"
+                    view="emailTemplate-view">
+            <collectionDatasource id="attachmentsDs"
+                                  property="attachments"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="emailTemplateDs"
+                    width="100%">
+            <column width="350px">
+                <field property="emailType"/>
+                <field property="subject"/>
+                <field property="name"/>
+            </column>
+        </fieldGroup>
+        <textArea caption="msg://bodyTextAreaCap"
+                  datasource="emailTemplateDs"
+                  property="body"
+                  width="100%"/>
+        <groupBox id="attachmentsBox"
+                  caption="msg://ru.glavkniga.gklients.entity/EmailTemplate.attachments">
+            <table id="attachmentsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="file.name"/>
+                    <column id="url"/>
+                    <column id="attachmentMethod"/>
+                </columns>
+                <rows datasource="attachmentsDs"/>
+                <buttonsPanel>
+                    <button action="attachmentsTable.add"/>
+                    <button action="attachmentsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

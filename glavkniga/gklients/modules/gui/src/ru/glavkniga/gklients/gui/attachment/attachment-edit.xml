@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.attachment.AttachmentEdit"
+        datasource="attachmentDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.attachment">
+    <dsContext>
+        <datasource id="attachmentDs"
+                    class="ru.glavkniga.gklients.entity.Attachment"
+                    view="attachment-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="attachmentDs">
+            <column width="300px">
+                <field property="file"/>
+                <field property="url"
+                       rows="5"/>
+                <field property="attachmentMethod"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

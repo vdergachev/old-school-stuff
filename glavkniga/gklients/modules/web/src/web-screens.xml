@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="/screens.xml"/>
+    <screen id="gklients$DistributionSubscription.browse"
+            template="/ru/glavkniga/gklients/gui/distributionsubscription/distribution-subscription-browse.xml"/>
+    <screen id="gklients$DistributionSubscription.edit"
+            template="/ru/glavkniga/gklients/gui/distributionsubscription/distribution-subscription-edit.xml"/>
+    <screen id="gklients$GKNews.browse"
+            template="/ru/glavkniga/gklients/gui/gknews/gk-news-browse.xml"/>
+</screen-config>

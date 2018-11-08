@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.schedule.ScheduleEdit"
+        datasource="scheduleDs"
+        focusComponent="ccMagazineField"
+        messagesPack="ru.glavkniga.gklients.gui.schedule">
+    <dsContext>
+        <datasource id="scheduleDs"
+                    class="ru.glavkniga.gklients.entity.Schedule"
+                    view="schedule-view">
+            <datasource id="magazineIssueDs"
+                        property="magazineIssue"/>
+        </datasource>
+        <collectionDatasource id="magazineDs"
+                              class="ru.glavkniga.gklients.entity.Magazine">
+            <query>
+                <![CDATA[select e from gklients$Magazine e]]>
+                <filter>
+                    <c>e.magazineAbb = :custom$abb</c>
+                </filter>
+            </query>
+
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <hbox align="MIDDLE_LEFT"
+                  spacing="true">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ccLabel"
+                       width="155px"/>
+                <textField id="ccMagazineField"
+                           align="MIDDLE_LEFT"
+                           datasource="magazineIssueDs"
+                           property="code"
+                           width="300px"/>
+            </hbox>
+            <hbox spacing="true">
+                <fieldGroup id="fieldGroup1"
+                            datasource="scheduleDs">
+                    <column width="120px">
+                        <field id="issueStart"/>
+                        <field id="issueFinish"/>
+                        <field id="issueSign"/>
+                    </column>
+                </fieldGroup>
+                <fieldGroup id="fieldGroup2"
+                            datasource="scheduleDs">
+                    <column width="120px">
+                        <field id="printingRecevie"/>
+                        <field id="siteUpload"/>
+                        <field id="deliveryDate"/>
+                    </column>
+                </fieldGroup>
+            </hbox>
+            <textArea caption="msg://comments"
+                      datasource="scheduleDs"
+                      property="comments"
+                      width="100%"/>
+        </vbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

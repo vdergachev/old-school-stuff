@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.clientdistributionsettings.ClientDistributionSettingsEdit"
+        datasource="clientDistributionSettingsDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.clientdistributionsettings">
+    <dsContext>
+        <datasource id="clientDistributionSettingsDs"
+                    class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                    view="subscriber-full"/>
+        <collectionDatasource id="clientsDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="client-view">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="600"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="clientDistributionSettingsDs">
+                <column width="250px">
+                    <field optionsDatasource="clientsDs"
+                           property="client"/>
+                    <field property="isCompany"/>
+                    <field property="isIp"/>
+                    <field property="isCivil"/>
+                    <field property="isWithWorkers"/>
+                    <field property="isWithoutWorkers"/>
+                    <field property="isOsno"/>
+                    <field property="isUsn"/>
+                    <field property="isEnvd"/>
+                    <field property="isEshn"/>
+                    <field property="isPsn"/>
+                </column>
+            </fieldGroup>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

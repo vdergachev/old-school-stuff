@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.glavkniga.gklients.gui.attachment.AttachmentBrowse"
+        focusComponent="attachmentsTable"
+        lookupComponent="attachmentsTable"
+        messagesPack="ru.glavkniga.gklients.gui.attachment">
+    <dsContext>
+        <groupDatasource id="attachmentsDs"
+                         class="ru.glavkniga.gklients.entity.Attachment"
+                         view="attachment-view">
+            <query>
+                <![CDATA[select e from gklients$Attachment e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                icon="icons/cancel.png"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="attachmentsTable"
+    spacing="true">
+        <filter id="filter"
+                applyTo="attachmentsTable"
+                datasource="attachmentsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="attachmentsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="file.name"
+                        caption="msg://fileNameCap"/>
+                <column id="file.size"
+                        caption="msg://fileSizeCap"/>
+                <column id="file.createDate"
+                        caption="msg://fileDateCap"/>
+                <column id="attachmentMethod"/>
+                <column id="url"/>
+            </columns>
+            <rows datasource="attachmentsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="attachmentsTable.create"/>
+                <button id="editBtn"
+                        action="attachmentsTable.edit"/>
+                <button id="removeBtn"
+                        action="attachmentsTable.remove"/>
+                <button id="excelBtn"
+                        action="attachmentsTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

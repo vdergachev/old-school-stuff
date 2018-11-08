@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.glavkniga.gklients.gui.clientservice.ClientServiceAgregated"
+        messagesPack="ru.glavkniga.gklients.gui.clientservice">
+    <dsContext>
+        <collectionDatasource id="clientServiceAgregatorsDs"
+                              class="ru.glavkniga.gklients.entity.ClientServiceAgregator"
+                              datasourceClass="ru.glavkniga.gklients.gui.clientservice.ServiceAggregatorDatasource"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <table id="clientServiceTable"
+               height="100%"
+               width="100%"
+               multiselect="true">
+            <actions>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="email"/>
+                <column id="service1"
+                        caption="msg://Services.ElverSubscription">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                               format="dd.MM.yyyy"/>
+                </column>
+                <column id="service2"
+                        caption="msg://Services.DemoSubscription">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                               format="dd.MM.yyyy"/>
+                </column>
+                <column id="service3"
+                        caption="msg://Services.WebsiteRegistration">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                               format="dd.MM.yyyy"/>
+                </column>
+                <column id="service4"
+                        caption="msg://Services.NewsSubscription">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                               format="dd.MM.yyyy"/>
+                </column>
+                <column id="service5"
+                        caption="msg://Services.Test"/>
+            </columns>
+            <rows datasource="clientServiceAgregatorsDs"/>
+            <rowsCount/>
+            <buttonsPanel>
+                <button id="btUpdate" action="clientServiceTable.refresh"/>
+                <button id="btExcel" action="clientServiceTable.excel"/>
+                <popupButton id="multiselectBtn"
+                             caption="msg://multiselectBtnCap"
+                             enable="false">
+                    <actions>
+                        <action id="makeOntimeSending"
+                                caption="msg://makeOntimeSendingCap"
+                                invoke="onMakeOntimeSending"/>
+                        <action id="subscribeToDistribution"
+                                caption="msg://subscribeToDistributionCap"
+                                invoke="onSubscribeToDistribution"/>
+                    </actions>
+                </popupButton>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

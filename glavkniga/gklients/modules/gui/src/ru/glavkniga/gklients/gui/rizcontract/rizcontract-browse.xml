@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.rizcontract.RizContractBrowse"
+        focusComponent="rizContractsTable"
+        lookupComponent="rizContractsTable"
+        messagesPack="ru.glavkniga.gklients.gui.rizcontract">
+    <dsContext>
+        <collectionDatasource id="rizContractsDs"
+                              class="ru.glavkniga.gklients.entity.RizContract"
+                              view="rizContract-view">
+            <query>
+                <![CDATA[select e from gklients$RizContract e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="rizContractsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="rizContractsDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <table id="rizContractsTable"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="riz"/>
+                <column id="contractNumber"/>
+                <column id="contractDate"/>
+            </columns>
+            <rows datasource="rizContractsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="rizContractsTable.create"/>
+                <button id="editBtn"
+                        action="rizContractsTable.edit"/>
+                <button id="removeBtn"
+                        action="rizContractsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

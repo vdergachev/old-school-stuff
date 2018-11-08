@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.testmark.TestMarkBrowse"
+        focusComponent="testMarksTable"
+        lookupComponent="testMarksTable"
+        messagesPack="ru.glavkniga.gklients.gui.testmark">
+    <dsContext>
+        <groupDatasource id="testMarksDs"
+                              class="ru.glavkniga.gklients.entity.TestMark"
+                              view="testMark-full">
+            <query>
+                <![CDATA[select e from gklients$TestMark e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <layout expand="testMarksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="testMarksTable"
+                datasource="testMarksDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="testMarksTable"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="email"/>
+                <column id="test"/>
+                <column id="mark"/>
+                <column id="datePass"/>
+            </columns>
+            <rows datasource="testMarksDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="removeBtn"
+                        action="testMarksTable.remove"/>
+                <button id="refreshBtn"
+                        caption="msg://btnGetFromSiteCap"
+                        invoke="onRefreshBtnClick"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

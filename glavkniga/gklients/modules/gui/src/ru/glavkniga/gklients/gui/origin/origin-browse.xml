@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.origin.OriginBrowse"
+        focusComponent="originsTable"
+        lookupComponent="originsTable"
+        messagesPack="ru.glavkniga.gklients.gui.origin">
+    <dsContext>
+        <groupDatasource id="originsDs"
+                         class="ru.glavkniga.gklients.entity.Origin"
+                         view="_local">
+            <query>
+                <![CDATA[select e from gklients$Origin e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="originsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="originsTable"
+                datasource="originsDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="originsTable"
+                    width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="originText"/>
+            </columns>
+            <rows datasource="originsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="originsTable.create"/>
+                <button id="editBtn"
+                        action="originsTable.edit"/>
+                <button id="removeBtn"
+                        action="originsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

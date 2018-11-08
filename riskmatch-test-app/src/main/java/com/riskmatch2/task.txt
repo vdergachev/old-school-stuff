@@ -1,0 +1,19 @@
+Online coding
+An insurance policy has the following main fields:
+- id
+- clientId
+- productId
+- carrierId
+- startDate
+- endDate
+Client Relationship.
+We analyze existing policies: we order all policies in ascending order by start date,￼and then process each policy. For each policy we set the Client Relationship to:
+- Renewed - if there is a policy for the same (Client, Product) prior to the start date of this policy;
+- Expanded - if there is a policy for the same (Client) for a product other than the product of this policy, prior to the start date of this policy and it is not Renewed;
+- New – if there are no policies for this (Client) prior to the start date of this policy;
+Task: Write a method that has 2 parameters:
+- policy - the policy for that we want to get Client Relationship
+- policySet - all policies
+and returns Client Relationship for the given policy.
+
+ClientRel clientRel(Policy policy, List<Policy> allPolicies)

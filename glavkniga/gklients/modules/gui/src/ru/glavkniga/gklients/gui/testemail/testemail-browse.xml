@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.testemail.TestEmailBrowse"
+        focusComponent="testEmailsTable"
+        lookupComponent="testEmailsTable"
+        messagesPack="ru.glavkniga.gklients.gui.testemail">
+    <dsContext>
+        <collectionDatasource id="testEmailsDs"
+                              class="ru.glavkniga.gklients.entity.TestEmail"
+                              view="testEmail-view">
+            <query>
+                <![CDATA[select e from gklients$TestEmail e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="testsDs"
+                              class="ru.glavkniga.gklients.entity.Test"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Test e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="testMarksFullDs"
+                              class="ru.glavkniga.gklients.entity.TestMark"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$TestMark e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="testMarkDs"
+                              class="ru.glavkniga.gklients.entity.TestMark"
+                              view="testMark-full">
+            <query>
+                <![CDATA[select e from gklients$TestMark e where e.email.id=:ds$testEmailsDs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="testEmailsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="testEmailsTable"
+                datasource="testEmailsDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <table id="testEmailsTable"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="email"/>
+                <column id="dateSave"/>
+            </columns>
+            <rows datasource="testEmailsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="removeBtn"
+                        action="testEmailsTable.remove"/>
+                <button id="getFromSite"
+                        caption="msg://btnGetFromSiteCap"
+                        invoke="onRefreshBtnClick"/>
+            </buttonsPanel>
+        </table>
+        <table id="testMarksTable"
+               height="250px"
+               width="100%">
+            <columns>
+                <column id="test"/>
+                <column id="mark"/>
+                <column id="datePass"/>
+            </columns>
+            <rows datasource="testMarkDs"/>
+        </table>
+    </layout>
+</window>

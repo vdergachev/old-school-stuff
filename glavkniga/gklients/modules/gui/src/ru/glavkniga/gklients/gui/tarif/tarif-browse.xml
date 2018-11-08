@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.tarif.TarifBrowse"
+        focusComponent="tarifsTable"
+        lookupComponent="tarifsTable"
+        messagesPack="ru.glavkniga.gklients.gui.tarif">
+    <dsContext>
+        <collectionDatasource id="tarifsDs"
+                              class="ru.glavkniga.gklients.entity.Tarif"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Tarif e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <table id="tarifsTable"
+               height="100%"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="tarifName"/>
+                <column id="tarifPrice"/>
+                <column id="tarifNumber"/>
+            </columns>
+            <rows datasource="tarifsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="tarifsTable.create"/>
+                <button id="editBtn"
+                        action="tarifsTable.edit"/>
+                <button id="removeBtn"
+                        action="tarifsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

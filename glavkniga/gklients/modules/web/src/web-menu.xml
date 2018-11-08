@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="clients"
+          icon="font-icon:GROUP"
+          insertBefore="report">
+        <item id="gklients$Client.browse"/>
+        <item screen="gklients$ClientFaliedEmails"/>
+        <item screen="gklients$Client.withServices"/>
+    </menu>
+    <menu id="services"
+          icon="font-icon:BOOK"
+          insertBefore="report">
+        <item id="gklients$ElverSubscription.lookup"/>
+        <item id="gklients$ClientService.browse"/>
+        <item screen="gklients$distributionSubscriptionComposition"/>
+        <item id="ClientServiceAgregated"
+              openType="NEW_TAB"/>
+        <separator/>
+        <item id="gklients$regkeyActReportExecutor"
+              openType="DIALOG"
+              resizable="true"/>
+        <item openType="DIALOG"
+              screen="rizByPeriodReportExecutor"/>
+    </menu>
+    <menu id="distributions"
+          icon="font-icon:PAPER_PLANE"
+          insertBefore="report">
+        <item screen="gklients$Distribution.browse"/>
+        <item screen="gklients$OnetimeMailing.browse"/>
+        <item screen="gklients$MailingStatistics.browse"/>
+    </menu>
+    <menu id="directory"
+          icon="font-icon:GEARS"
+          insertBefore="report">
+        <menu id="riz">
+            <item id="gklients$Riz.browse"/>
+            <item id="gklients$RizContract.browse"/>
+        </menu>
+        <menu id="magaziine">
+            <item id="gklients$Magazine.lookup"/>
+            <item id="gklients$MagazineIssue.browse"/>
+            <item id="gklients$Schedule.lookup"/>
+        </menu>
+        <menu id="test">
+            <item id="gklients$Test.browse"/>
+            <item id="gklients$TestEmail.browse"/>
+            <item id="gklients$TestMark.browse"/>
+        </menu>
+        <menu id="service_data">
+            <item id="gklients$Tarif.lookup"/>
+            <item id="gklients$EmailTemplate.browse"/>
+            <item id="gklients$MunObraz.browse"/>
+            <item id="gklients$automation-test"
+                  openType="DIALOG"
+                  resizable="true"/>
+            <item id="gklients$Origin.browse"/>
+        </menu>
+        <menu id="mailing">
+            <item screen="gklients$Attachment.browse"/>
+            <item screen="gklients$Token.browse"/>
+            <separator/>
+            <item screen="gklients$DistributionSubscription.browse"/>
+            <item screen="gklients$ClientDistributionSettings.browse"/>
+            <item screen="gklients$GKNews.browse"/>
+        </menu>
+    </menu>
+</menu-config>

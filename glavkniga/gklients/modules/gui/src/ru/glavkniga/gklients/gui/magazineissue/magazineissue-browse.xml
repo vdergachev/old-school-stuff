@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.magazineissue.MagazineIssueBrowse"
+        focusComponent="magazineIssuesTable"
+        lookupComponent="magazineIssuesTable"
+        messagesPack="ru.glavkniga.gklients.gui.magazineissue">
+    <dsContext>
+        <datasource id="magazineIssueDs"
+                    class="ru.glavkniga.gklients.entity.MagazineIssue"
+                    view="issue-with-magazine"/>
+        <collectionDatasource id="magazineIssuesDs"
+                              class="ru.glavkniga.gklients.entity.MagazineIssue"
+                              view="issue-with-magazine">
+            <query>
+                <![CDATA[select e from gklients$MagazineIssue e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="magazineIssuesTable"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        datasource="magazineIssuesDs"
+                        defaultMode="fts"
+                        modeSwitchVisible="true">
+                    <properties include=".*"/>
+                </filter>
+                <table id="magazineIssuesTable"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                        <action id="excel"/>
+                    </actions>
+                    <columns>
+                        <column id="magazine"/>
+                        <column id="month"/>
+                        <column id="year"/>
+                        <column id="number"/>
+                        <column id="code"/>
+                        <column id="issuePlannedDate"/>
+                        <column id="price"/>
+                    </columns>
+                    <rows datasource="magazineIssuesDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="magazineIssuesTable.create"/>
+                        <button id="editBtn"
+                                action="magazineIssuesTable.edit"/>
+                        <button id="removeBtn"
+                                action="magazineIssuesTable.remove"/>
+                        <button id="excelBtn"
+                                action="magazineIssuesTable.excel"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <vbox id="fieldGroupBox">
+                    <fieldGroup id="fieldGroup"
+                                datasource="magazineIssueDs">
+                        <column>
+                            <field id="magazine"
+                                   width="250px"/>
+                            <field id="month"
+                                   width="250px"/>
+                            <field id="year"
+                                   width="250px"/>
+                            <field id="number"
+                                   width="250px"/>
+                            <field id="code"
+                                   width="250px"/>
+                            <field id="issuePlannedDate"
+                                   width="250px"/>
+                            <field id="price"/>
+                        </column>
+                    </fieldGroup>
+                </vbox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            caption="mainMsg://actions.Ok"
+                            icon="icons/ok.png"
+                            invoke="save"/>
+                    <button id="cancelBtn"
+                            caption="mainMsg://actions.Cancel"
+                            icon="icons/cancel.png"
+                            invoke="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

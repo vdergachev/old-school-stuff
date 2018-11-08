@@ -1,0 +1,11 @@
+.gradle
+*.ipr
+*.iml
+*.iws
+build/*
+modules/*/build/*
+out
+test-run
+deploy
+/modules/core/src/app.properties
+.idea/

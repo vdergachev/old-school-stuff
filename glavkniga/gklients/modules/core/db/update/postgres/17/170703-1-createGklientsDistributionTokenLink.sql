@@ -1,0 +1,5 @@
+create table GKLIENTS_DISTRIBUTION_TOKEN_LINK (
+    TOKEN_ID uuid,
+    DISTRIBUTION_ID uuid,
+    primary key (TOKEN_ID, DISTRIBUTION_ID)
+);

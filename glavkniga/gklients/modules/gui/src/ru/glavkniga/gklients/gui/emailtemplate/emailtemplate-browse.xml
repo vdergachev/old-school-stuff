@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.emailtemplate.EmailTemplateBrowse"
+        focusComponent="emailTemplatesTable"
+        lookupComponent="emailTemplatesTable"
+        messagesPack="ru.glavkniga.gklients.gui.emailtemplate">
+    <dsContext>
+        <collectionDatasource id="emailTemplatesDs"
+                              class="ru.glavkniga.gklients.entity.EmailTemplate"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$EmailTemplate e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <table id="emailTemplatesTable"
+               height="100%"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="emailType"/>
+                <column id="subject"/>
+                <column id="body"
+                        maxTextLength="50"/>
+            </columns>
+            <rows datasource="emailTemplatesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="emailTemplatesTable.create"/>
+                <button id="editBtn"
+                        action="emailTemplatesTable.edit"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

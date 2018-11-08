@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 gklients
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.distributionSubscriptionComposition.ClientWithSettingsEdit"
+        datasource="clientDistributionSettingsDs"
+        messagesPack="ru.glavkniga.gklients.gui.distributionSubscriptionComposition">
+    <dsContext>
+        <datasource id="clientDistributionSettingsDs"
+                    class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                    view="subscriber-full">
+            <datasource id="clientDs"
+                        property="client"/>
+        </datasource>
+        <datasource id="distributionSubscriptionDs"
+                    class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                    view="distribution-subscription-mainLinks"/>
+        <collectionDatasource id="allClientsDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="client-full-view">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="distributionsDs"
+                              class="ru.glavkniga.gklients.entity.Distribution"
+                              view="distribution-mainLinks">
+            <query>
+                <![CDATA[select e from gklients$Distribution e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="allSettingsForClient"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                              view="subscriber-full">
+            <query>
+                <![CDATA[select e from gklients$ClientDistributionSettings e where e.client.id=:ds$clientDs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <vbox spacing="true">
+                <groupBox id="clientGroupBox"
+                          caption="msg://clientCaption"
+                          spacing="true"
+                          width="400px">
+                    <grid spacing="true">
+                        <columns count="2"/>
+                        <rows>
+                            <row>
+                                <label id="emailLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://emailLabelCap"/>
+                                <lookupField id="emailField"
+                                             datasource="clientDistributionSettingsDs"
+                                             filterMode="STARTS_WITH"
+                                             newOptionAllowed="true"
+                                             newOptionHandler="onNewOptionAdd"
+                                             optionsDatasource="allClientsDs"
+                                             property="client"
+                                             required="true"
+                                             requiredMessage="msg://EmailWarning"
+                                             width="250px"/>
+                            </row>
+                            <row>
+                                <label id="passLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://passLabelMsg"/>
+                                <textField id="passField"
+                                           datasource="clientDs"
+                                           editable="false"
+                                           enable="false"
+                                           property="password"
+                                           width="250px"/>
+                            </row>
+                            <row>
+                                <label id="nameLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://nameLabelMsg"/>
+                                <textField id="nameField"
+                                           datasource="clientDs"
+                                           enable="false"
+                                           property="name"
+                                           width="250px"/>
+                            </row>
+                            <row>
+                                <label id="itnLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://itnLabelCap"/>
+                                <textField id="itnField"
+                                           datasource="clientDs"
+                                           enable="false"
+                                           property="itn"
+                                           width="250px"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </groupBox>
+                <groupBox id="distGroupBox"
+                          caption="msg://distGroupBoxCaption"
+                          spacing="true"
+                          visible="false"
+                          width="400px">
+                    <hbox>
+                        <label id="distLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://distLabelCap"
+                               width="90px"/>
+                        <lookupField id="distField"
+                                     optionsDatasource="distributionsDs"
+                                     required="true"
+                                     requiredMessage="msg://distFieldReqMsg"
+                                     width="250px"/>
+                    </hbox>
+                </groupBox>
+                <groupBox id="clientSettingsGroupBox"
+                          caption="msg://clientSettingsCap"
+                          orientation="horizontal"
+                          spacing="true"
+                          width="400px">
+                    <fieldGroup id="settingsFieldGroup1"
+                                datasource="clientDistributionSettingsDs"
+                                width="300px">
+                        <column>
+                            <field property="isCompany"/>
+                            <field property="isIp"/>
+                            <field property="isCivil"/>
+                            <field property="isWithWorkers"/>
+                            <field property="isWithoutWorkers"/>
+                        </column>
+                    </fieldGroup>
+                    <fieldGroup id="settingsFieldGroup2"
+                                datasource="clientDistributionSettingsDs"
+                                width="250px">
+                        <column>
+                            <field property="isOsno"/>
+                            <field property="isUsn"/>
+                            <field property="isPsn"/>
+                            <field property="isEnvd"/>
+                            <field property="isEshn"/>
+                        </column>
+                    </fieldGroup>
+                </groupBox>
+            </vbox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

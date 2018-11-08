@@ -1,0 +1,11 @@
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER add column IS_ESHN boolean ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column CITY cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column COMPANY_NAME cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column IS_ESHD cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column HASH cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column ACTIVE cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column DAILY_ALLOWED cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column ADVERTS_ALLOWED cascade ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER drop column ORIGIN_ID cascade ;
+-- update GKLIENTS_DISTRIBUTION_SUBSCRIBER set CLIENT_ID = <default_value> where CLIENT_ID is null ;
+alter table GKLIENTS_DISTRIBUTION_SUBSCRIBER alter column CLIENT_ID set not null ;

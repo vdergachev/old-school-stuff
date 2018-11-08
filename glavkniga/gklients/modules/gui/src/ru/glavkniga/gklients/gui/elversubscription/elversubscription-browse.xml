@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.elversubscription.ElverSubscriptionBrowse"
+        focusComponent="elverSubscriptionsTable"
+        lookupComponent="elverSubscriptionsTable"
+        messagesPack="ru.glavkniga.gklients.gui.elversubscription">
+    <dsContext>
+        <collectionDatasource id="logDs"
+                              class="com.haulmont.cuba.security.entity.EntityLogItem"
+                              view="logView">
+            <query>
+                <![CDATA[
+                select i from sec$EntityLog i
+
+            ]]>
+            </query>
+        </collectionDatasource>
+        <groupDatasource id="elverSubscriptionsDs"
+                         class="ru.glavkniga.gklients.entity.ElverSubscription"
+                         view="elverSubscription-full">
+            <query>
+                <![CDATA[select e from gklients$ElverSubscription e]]>
+            </query>
+        </groupDatasource>
+        <datasource id="elverSubsSingleDS"
+                    class="ru.glavkniga.gklients.entity.ElverSubscription"
+                    view="_local"/>
+        <datasource id="clientDs"
+                    class="ru.glavkniga.gklients.entity.Client"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="elverSubscriptionsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="elverSubscriptionsDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="elverSubscriptionsTable"
+                    aggregatable="true"
+                    multiselect="true"
+                    showTotalAggregation="false"
+                    width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+                <action id="excel"/>
+                <action id="refresh"/>
+                <action id="activateRegkey"
+                        caption="msg://regkeyActivate"
+                        invoke="activatePerform"
+                        trackSelection="true"/>
+            </actions>
+            <columns>
+                <column id="riz"
+                        maxTextLength="40"/>
+                <column id="client.email"/>
+                <column id="client.itn"/>
+                <column id="client.isBlocked"/>
+                <column id="requestDate"/>
+                <column id="regkey">
+                    <aggregation type="COUNT"/>
+                </column>
+                <column id="tarif"/>
+                <column id="issueStart"/>
+                <column id="issueEnd"/>
+            </columns>
+            <rows datasource="elverSubscriptionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <hbox spacing="true">
+                    <button id="createBtn"
+                            action="elverSubscriptionsTable.create"/>
+                    <button id="editBtn"
+                            action="elverSubscriptionsTable.edit"/>
+                    <button id="removeBtn"
+                            action="elverSubscriptionsTable.remove"/>
+                    <button id="updateButton"
+                            action="elverSubscriptionsTable.refresh"/>
+                    <button id="excelBtn"
+                            action="elverSubscriptionsTable.excel"/>
+                    <popupButton id="flagBtn"
+                                 caption="msg://flagBtnMsg"
+                                 enable="false">
+                        <actions>
+                            <action id="keyEntered"
+                                    caption="msg://keyEnteredMsg"
+                                    invoke="keyEnteredAction"/>
+                            <action id="keySentToRiz"
+                                    caption="msg://keySentToRizMsg"
+                                    invoke="keySentToRizAction"/>
+                            <action id="tariffChecked"
+                                    caption="msg://tariffCheckedMsg"
+                                    invoke="tariffCheckedAction"/>
+                            <action id="passSent"
+                                    caption="msg://passSentMsg"
+                                    invoke="passSentAction"/>
+                        </actions>
+                    </popupButton>
+                    <popupButton id="multiselectBtn"
+                                 caption="msg://multiselectBtnCap"
+                                 enable="false">
+                        <actions>
+                            <action id="makeOntimeSending"
+                                    caption="msg://makeOntimeSendingCap"
+                                    invoke="onMakeOntimeSending"/>
+                            <action id="subscribeToDistribution"
+                                    caption="msg://subscribeToDistributionCap"
+                                    invoke="onSubscribeToDistribution"/>
+                        </actions>
+                    </popupButton>
+                </hbox>
+                <button id="blockBtn"
+                        caption="msg://blockBtnCap"
+                        enable="false"
+                        invoke="onBlockBtnClick"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

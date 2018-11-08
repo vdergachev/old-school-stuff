@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/6.0/fts.xsd">
+    <entities>
+        <entity class="ru.glavkniga.gklients.entity.ClientDistributionSettings">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Origin">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.ElverSubscription">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Riz">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Tarif">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Magazine">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.MagazineIssue">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Schedule">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.EmailTemplate">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Client">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.MunObraz">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.RizContract">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Test">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.TestEmail">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.TestMark">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.ClientService">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.WebstieQueue">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.WebsiteQueueFilter">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Distribution">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.DistributionSubscription">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.OnetimeMailing">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Attachment">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.Token">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.crudentity.GKNews">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.crudentity.GKNewsImage">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.MailingStatistics">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.glavkniga.gklients.entity.FailedEmail">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>

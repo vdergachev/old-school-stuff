@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.rizcontract.RizContractEdit"
+        datasource="rizContractDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.rizcontract">
+    <dsContext>
+        <datasource id="rizContractDs"
+                    class="ru.glavkniga.gklients.entity.RizContract"
+                    view="rizContract-view"/>
+        <collectionDatasource id="rizDs"
+                              class="ru.glavkniga.gklients.entity.Riz"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Riz e order by e.number]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="rizContractDs">
+            <column width="250px">
+                <field id="riz"
+                       optionsDatasource="rizDs"/>
+                <field id="contractNumber"/>
+                <field id="contractDate"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.glavkniga.gklients.gui.distributionSubscriptionComposition.MassDistributionSubscriptionAdd"
+        messagesPack="ru.glavkniga.gklients.gui.distributionSubscriptionComposition">
+    <dsContext>
+        <datasource id="clientDistributionSettingsDs"
+                    allowCommit="false"
+                    class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                    view="subscriber-full"/>
+
+
+
+        <collectionDatasource id="allClientsDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="distributionsDs"
+                              class="ru.glavkniga.gklients.entity.Distribution"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Distribution e]]>
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="externalClientsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="client-full-view">
+            <query>
+                <![CDATA[select c from gklients$Client c WHERE c IN :custom$clients]]>
+            </query>
+        </collectionDatasource>
+
+        <collectionDatasource id="newClientDistributionSettingsDs"
+                              class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                              refreshMode="NEVER"
+                              view="subscriber-full"/>
+        <collectionDatasource id="newDistributionSubscriptionsDs"
+                              class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                              refreshMode="NEVER"
+                              view="distribution-subscription-mainLinks"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"/>
+    <layout spacing="true">
+        <hbox spacing="true">
+            <scrollBox id="scrollBox"
+                       height="280px"
+                       width="300px">
+                <tokenList id="extClients"
+                           datasource="externalClientsDs"
+                           width="100%">
+                    <lookup lookup="true"
+                            optionsDatasource="allClientsDs"/>
+                </tokenList>
+            </scrollBox>
+            <vbox spacing="true">
+                <groupBox id="distGroupBox"
+                          caption="msg://distGroupBoxCaption"
+                          spacing="true"
+                          width="400px">
+                    <hbox>
+                        <label id="distLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://distLabelCap"
+                               width="90px"/>
+                        <lookupField id="distField"
+                                     optionsDatasource="distributionsDs"
+                                     required="true"
+                                     requiredMessage="msg://distFieldReqMsg"
+                                     width="250px"/>
+                    </hbox>
+                </groupBox>
+                <groupBox id="clientSettingsGroupBox"
+                          caption="msg://clientSettingsCap"
+                          orientation="horizontal"
+                          spacing="true"
+                          width="400px">
+                    <fieldGroup id="settingsFieldGroup1"
+                                datasource="clientDistributionSettingsDs"
+                                width="300px">
+                        <column>
+                            <field property="isCompany"/>
+                            <field property="isIp"/>
+                            <field property="isCivil"/>
+                            <field property="isWithWorkers"/>
+                            <field property="isWithoutWorkers"/>
+                        </column>
+                    </fieldGroup>
+                    <fieldGroup id="settingsFieldGroup2"
+                                datasource="clientDistributionSettingsDs"
+                                width="250px">
+                        <column>
+                            <field property="isOsno"/>
+                            <field property="isUsn"/>
+                            <field property="isPsn"/>
+                            <field property="isEnvd"/>
+                            <field property="isEshn"/>
+                        </column>
+                    </fieldGroup>
+                </groupBox>
+            </vbox>
+        </hbox>
+        <hbox spacing="true"
+              stylename="c-edit-window-actions">
+            <button id="windowCommit"
+                    caption="msg://actions.Ok"
+                    icon="icons/ok.png"
+                    invoke="saveAndClose"/>
+            <button id="windowClose"
+                    caption="msg://actions.Cancel"
+                    icon="icons/cancel.png"
+                    invoke="windowClose"/>
+        </hbox>
+    </layout>
+</window>

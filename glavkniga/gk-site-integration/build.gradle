@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE") }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("mysql:mysql-connector-java:5.1.43")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:1.5.6.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE")
+    testCompile("org.springframework.boot:spring-boot-starter-test:1.5.6.RELEASE")
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.distributionSubscriptionComposition.DistributionSubscriptionComposition"
+        focusComponent="clientsTable"
+        lookupComponent="clientsTable"
+        messagesPack="ru.glavkniga.gklients.gui.distributionSubscriptionComposition">
+    <dsContext>
+        <groupDatasource id="clientDistributionSettingsDs"
+                         class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                         view="subscriber-full">
+            <query>
+                <![CDATA[select e from gklients$ClientDistributionSettings e]]>
+            </query>
+        </groupDatasource>
+        <collectionDatasource id="distributionSubscriptionsDs"
+                              class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                              view="distribution-subscription-mainLinks">
+            <query>
+                <![CDATA[select e from gklients$DistributionSubscription e where e.client.id = :ds$clientDistributionSettingsDs.client]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="gKNewsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.crudentity.GKNews"
+                              view="gKNews-full-view">
+            <query>
+                <![CDATA[select e from gklients$GKNews e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="splitPanel"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clientsTable"
+                datasource="clientDistributionSettingsDs">
+            <properties include=".*"/>
+        </filter>
+        <split id="splitPanel"
+               minSplitPosition="100px"
+               orientation="vertical"
+               pos="70"
+               width="100%">
+            <groupTable id="clientsTable"
+                        height="100%"
+                        multiselect="true"
+                        width="100%">
+                <actions>
+                    <action id="create"
+                            openType="DIALOG"/>
+                    <action id="edit"
+                            openType="DIALOG"/>
+                    <action id="remove"/>
+                    <action id="excel"/>
+                </actions>
+                <columns>
+                    <column id="client.name"/>
+                    <column id="client.email"/>
+                    <column id="client.itn"/>
+                    <column id="client.phone"/>
+                    <column id="client.isBlocked"/>
+                    <column id="isCompany"/>
+                    <column id="isCivil"/>
+                    <column id="isIp"/>
+                    <column id="isOsno"/>
+                    <column id="isUsn"/>
+                    <column id="isPsn"/>
+                    <column id="isEnvd"/>
+                    <column id="isEshn"/>
+                    <column id="isWithWorkers"/>
+                    <column id="isWithoutWorkers"/>
+                </columns>
+                <rows datasource="clientDistributionSettingsDs"/>
+                <rowsCount/>
+                <buttonsPanel>
+                    <button id="createClientBtn"
+                            action="clientsTable.create"
+                            caption="msg://createClientBtn"/>
+                    <button id="editClientBtn"
+                            action="clientsTable.edit"/>
+                    <button id="removeClientBtn"
+                            action="clientsTable.remove"/>
+                    <button id="excelClientBtn"
+                            action="clientsTable.excel"/>
+                    <popupButton id="multiselectBtn"
+                                 caption="msg://multiselectBtnCap"
+                                 enable="false">
+                        <actions>
+                            <action id="makeOntimeSending"
+                                    caption="msg://makeOntimeSendingCap"
+                                    invoke="onMakeOntimeSending"/>
+                            <action id="addSubscription"
+                                    caption="msg://addSubscriptionCap"
+                                    enable="false"
+                                    invoke="onAddSubscription"
+                                    visible="false"/>
+                        </actions>
+                    </popupButton>
+                    <button id="newsDistPreview"
+                            caption="msg://newsDistPreviewCap"
+                            invoke="onPreviewButtonClick"/>
+                </buttonsPanel>
+            </groupTable>
+            <table id="clientDistributionSubscription"
+                   caption="msg://distributionCaption"
+                   height="100%"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                    <action id="refresh"/>
+                </actions>
+                <columns>
+                    <column id="distribution"/>
+                    <column id="dateBegin"/>
+                    <column id="dateStatusUpdate"/>
+                    <column id="status"/>
+                </columns>
+                <rows datasource="distributionSubscriptionsDs"/>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="createBtn"
+                            caption="msg://createSubsBtn"
+                            enable="false"
+                            invoke="newClientDistributionSubscription"/>
+                    <button id="editBtn"
+                            action="clientDistributionSubscription.edit"/>
+                    <button id="removeBtn"
+                            action="clientDistributionSubscription.remove"/>
+                    <button id="refreshBtn"
+                            action="clientDistributionSubscription.refresh"/>
+                </buttonsPanel>
+            </table>
+        </split>
+    </layout>
+</window>

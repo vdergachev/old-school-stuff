@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.client.ClientEdit"
+        datasource="clientDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.client">
+    <dsContext>
+        <datasource id="clientDs"
+                    class="ru.glavkniga.gklients.entity.Client"
+                    view="client-view"/>
+        <collectionDatasource id="originsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Origin">
+            <query>
+                <![CDATA[select e from gklients$Origin e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="clientDs">
+            <column width="280px">
+                <field id="name"/>
+                <field id="email">
+                    <validator class="com.haulmont.cuba.gui.components.validators.EmailValidator"
+                               message="msg://emailWrong"/>
+                </field>
+                <field id="itn"/>
+                <field id="phone"/>
+                <field id="password"
+                       editable="false"/>
+                <field optionsDatasource="originsDs"
+                       property="origin"/>
+                <field property="isBlocked"/>
+                <field property="badEmail"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

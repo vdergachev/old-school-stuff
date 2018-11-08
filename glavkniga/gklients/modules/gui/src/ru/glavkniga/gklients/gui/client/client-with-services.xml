@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.client.ClientWithServices"
+        focusComponent="clientsTable"
+        lookupComponent="clientsTable"
+        messagesPack="ru.glavkniga.gklients.gui.client">
+    <dsContext>
+        <groupDatasource id="clientsDs"
+                         class="ru.glavkniga.gklients.entity.Client"
+                         view="client-full-view">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clientsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clientsTable"
+                datasource="clientsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clientsTable"
+                    multiselect="true"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="email"/>
+            </columns>
+            <rows datasource="clientsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="clientsTable.create"/>
+                <button id="editBtn"
+                        action="clientsTable.edit"/>
+                <button id="removeBtn"
+                        action="clientsTable.remove"/>
+                <button id="refreshBtn"
+                        action="clientsTable.refresh"/>
+                <button id="excelBtn"
+                        action="clientsTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

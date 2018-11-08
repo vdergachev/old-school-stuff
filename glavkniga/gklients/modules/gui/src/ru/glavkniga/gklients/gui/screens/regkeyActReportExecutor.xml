@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.glavkniga.gklients.gui.screens.Regkeyactreportexecutor"
+        messagesPack="ru.glavkniga.gklients.gui.screens">
+    <dsContext>
+        <collectionDatasource id="rizDs"
+                              class="ru.glavkniga.gklients.entity.Riz"
+                              view="riz-with_contract">
+            <query>
+                <![CDATA[select e from gklients$Riz e order by e.number]]>
+                <filter>
+                    <and>
+                        <c join=", gklients$ElverSubscription es">e.id = es.riz.id</c>
+                        <c join=", gklients$RizContract rc">e.id = rc.riz.id</c>
+                        <c>es.createTs between :custom$dateFrom and :custom$dateTo</c>
+                    </and>
+                </filter>
+            </query>
+        </collectionDatasource>
+        <datasource id="rizSelectedDs"
+                    class="ru.glavkniga.gklients.entity.Riz"
+                    view="_minimal"/>
+    </dsContext>
+    <layout expand="bpReport"
+            spacing="true">
+        <grid id="gReport"
+              spacing="true">
+            <columns count="2"/>
+            <rows>
+                <row>
+                    <label id="lFrom"
+                           align="MIDDLE_LEFT"
+                           value="msg://dfFromCap"/>
+                    <dateField id="dfFrom"
+                               align="MIDDLE_CENTER"
+                               dateFormat="dd.MM.yyyy"
+                               width="500px"/>
+                </row>
+                <row>
+                    <label id="lTo"
+                           align="MIDDLE_LEFT"
+                           value="msg://lToCap"/>
+                    <dateField id="dfTo"
+                               align="MIDDLE_LEFT"
+                               dateFormat="dd.MM.yyyy"
+                               width="500px"/>
+                </row>
+                <row>
+                    <label id="lRiz"
+                           value="msg://lRizCap"/>
+                    <lookupField id="lfRiz"
+                                 optionsDatasource="rizDs"
+                                 width="500px"/>
+                </row>
+            </rows>
+        </grid>
+        <buttonsPanel id="bpReport">
+            <button id="bOk"
+                    caption="msg://bOk"
+                    invoke="onBokClick"/>
+            <button id="bMakeAndSend"
+                    caption="msg://bMakeAndSendMs"
+                    invoke="onBMakeAndSendClick"/>
+            <button id="bCancel"
+                    caption="msg://bCancel"
+                    invoke="onBcancelClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

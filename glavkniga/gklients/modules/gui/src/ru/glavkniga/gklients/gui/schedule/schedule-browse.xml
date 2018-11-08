@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.schedule.ScheduleBrowse"
+        focusComponent="scheduleTable"
+        lookupComponent="scheduleTable"
+        messagesPack="ru.glavkniga.gklients.gui.schedule">
+    <dsContext>
+        <collectionDatasource id="schedulesDs"
+                              class="ru.glavkniga.gklients.entity.Schedule"
+                              view="schedule-view">
+            <query>
+                <![CDATA[select e from gklients$Schedule e ORDER BY e.deliveryDate]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <table id="scheduleTable"
+               height="100%"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="magazineIssue"/>
+                <column id="comments"/>
+            </columns>
+            <rows datasource="schedulesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="scheduleTable.create"/>
+                <button id="editBtn"
+                        action="scheduleTable.edit"/>
+                <button id="removeBtn"
+                        action="scheduleTable.remove"/>
+                <button id="excelBtn"
+                        action="scheduleTable.excel"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

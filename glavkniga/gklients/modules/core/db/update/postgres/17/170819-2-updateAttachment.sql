@@ -1,0 +1,2 @@
+update GKLIENTS_ATTACHMENT set ATTACHMENT_METHOD = 0 where ATTACHMENT_METHOD is null ;
+alter table GKLIENTS_ATTACHMENT alter column ATTACHMENT_METHOD set not null ;

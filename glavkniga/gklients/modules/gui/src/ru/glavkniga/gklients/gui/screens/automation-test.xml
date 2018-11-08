@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.glavkniga.gklients.gui.screens.AutomationTest"
+        messagesPack="ru.glavkniga.gklients.gui.screens">
+    <dsContext>
+        <collectionDatasource id="userDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="esDs"
+                              class="ru.glavkniga.gklients.entity.ElverSubscription"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$ElverSubscription e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="bp"
+            spacing="true">
+        <groupBox id="gb1"
+                  caption="msg://gb1Cap"
+                  orientation="horizontal"
+                  spacing="true"
+                  width="100%">
+            <grid spacing="true">
+                <columns count="3"/>
+                <rows>
+                    <row>
+                        <button id="countUsersBtn"
+                                caption="msg://countUsersBtnCap"
+                                invoke="onCountusersbtnClick"/>
+                        <button id="countRegkeysBtn"
+                                caption="msg://countRegkeysBtnCap"
+                                invoke="onCountregkeysbtnClick"/>
+                    </row>
+                    <row>
+                        <button id="countEmails"
+                                caption="msg://countEmailCap"
+                                invoke="onCountEmailClick"/>
+                        <button id="countMarks"
+                                caption="msg://countTestMarkCap"
+                                invoke="onCountTestMarkClick"/>
+                        <button id="countTests"
+                                caption="msg://countTestCap"
+                                invoke="onCountTestClick"/>
+                    </row>
+                    <row>
+                        <button id="getEmails"
+                                caption="msg://getEmailCap"
+                                invoke="onGetEmailClick"/>
+                        <button id="getMarks"
+                                caption="msg://getTestMarkCap"
+                                invoke="onGetTestMarkClick"/>
+                        <button id="getTests"
+                                caption="msg://getTestCap"
+                                invoke="onGetTestClick"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <groupBox id="gb2"
+                  caption="msg://gb2Cap"
+                  spacing="true">
+            <grid spacing="true">
+                <columns count="2"/>
+                <rows>
+                    <row>
+                        <lookupField id="userField"
+                                     caption="msg://userFieldCap"
+                                     width="300px"/>
+                        <button id="isUserBtn"
+                                align="BOTTOM_LEFT"
+                                caption="msg://isUserBtnCap"
+                                invoke="onIsuserbtnClick"/>
+                    </row>
+                    <row>
+                        <lookupField id="regkeyField"
+                                     caption="msg://regkeyFieldCap"
+                                     width="300px"/>
+                        <button id="isRegkeyBtn"
+                                align="BOTTOM_LEFT"
+                                caption="msg://isRegkeyBtnCap"
+                                invoke="onIsregkeybtnClick"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <groupBox id="gb3"
+                  caption="msg://gb3Cap"
+                  orientation="horizontal">
+            <button id="setUsers"
+                    caption="msg://setUsersCap"
+                    invoke="onSetusersClick"/>
+            <button id="setRegkeys"
+                    caption="msg://setRegkeysCap"
+                    invoke="onSetregkeysClick"/>
+            <button id="setSchedule"
+                    caption="msg://setScheduleCap"
+                    invoke="onSetscheduleClick"/>
+        </groupBox>
+        <buttonsPanel id="bp">
+            <button id="btnClose"
+                    caption="msg://btnCloseCap"
+                    invoke="onBtncloseClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

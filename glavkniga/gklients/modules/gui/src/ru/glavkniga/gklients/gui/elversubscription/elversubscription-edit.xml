@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.elversubscription.ElverSubscriptionEdit"
+        datasource="elverSubscriptionDs"
+        focusComponent="emailField"
+        messagesPack="ru.glavkniga.gklients.gui.elversubscription">
+    <dsContext>
+        <datasource id="elverSubscriptionDs"
+                    class="ru.glavkniga.gklients.entity.ElverSubscription"
+                    view="elverSubscription-browse">
+            <datasource id="clientDs"
+                        property="client"/>
+        </datasource>
+        <collectionDatasource id="rizDs"
+                              class="ru.glavkniga.gklients.entity.Riz"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Riz e order by e.number]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="tarifDs"
+                              class="ru.glavkniga.gklients.entity.Tarif"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Tarif e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="clientsCollectionDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="magazineIssueDs"
+                              class="ru.glavkniga.gklients.entity.MagazineIssue"
+                              view="issue-with-magazine">
+            <query>
+                <![CDATA[select e from gklients$MagazineIssue e join gklients$Magazine m on e.magazine.id = m.id where m.magazineID = 1 order by e.code]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="clientSubscriptions"
+                              class="ru.glavkniga.gklients.entity.ElverSubscription"
+                              view="elverSubscription-browse">
+            <query>
+                <![CDATA[select e from gklients$ElverSubscription e where e.client.id = :custom$client]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <groupBox caption="msg://clientCaption"
+                  spacing="true">
+            <grid spacing="true">
+                <columns count="3"/>
+                <rows>
+                    <row>
+                        <label id="emailLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://emailLabelMsg"/>
+                        <lookupField id="emailField"
+                                     datasource="elverSubscriptionDs"
+                                     enable="false"
+                                     filterMode="STARTS_WITH"
+                                     newOptionAllowed="true"
+                                     newOptionHandler="onNewOptionAdd"
+                                     optionsDatasource="clientsCollectionDs"
+                                     property="client"
+                                     required="true"
+                                     requiredMessage="msg://EmailWarning"
+                                     width="250px"/>
+                        <button id="unlockButton"
+                               align="MIDDLE_LEFT"
+                               caption="msg://unlockButtonCap"
+                        invoke="onUnlockButtonClick"/>
+                    </row>
+                    <row>
+                        <label id="passLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://passLabelMsg"/>
+                        <textField id="passField"
+                                   datasource="clientDs"
+                                   editable="false"
+                                   enable="false"
+                                   property="password"
+                                   width="250px"/>
+                    </row>
+                    <row>
+                        <label id="nameLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://nameLabelMsg"/>
+                        <textField id="nameField"
+                                   datasource="clientDs"
+                                   enable="false"
+                                   property="name"
+                                   width="250px"/>
+                    </row>
+                    <row>
+                        <label id="itnLabel"
+                               align="MIDDLE_LEFT"
+                               value="msg://itnLabelMsg"/>
+                        <textField id="itnField"
+                                   datasource="clientDs"
+                                   enable="false"
+                                   property="itn"
+                                   width="250px"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <groupBox caption="msg://SubscriptionCaption"
+                  spacing="true">
+            <grid spacing="true">
+                <columns count="3"/>
+                <rows>
+                    <row>
+                        <label id="regkeyLabel"
+                               value="msg://regkeyLabelMsg"/>
+                        <textField id="regkeyField"
+                                   datasource="elverSubscriptionDs"
+                                   editable="false"
+                                   enable="false"
+                                   property="regkey"
+                                   width="250px"/>
+                        <linkButton id="regkeyGenerateBtn"
+                                    caption="msg://regkeyGenerateBtnMsg"
+                                    invoke="onRegkeygeneratebtnClick"
+                                    visible="false"/>
+                    </row>
+                    <row>
+                        <label id="rizLabel"
+                               value="msg://rizLabelMsg"/>
+                        <lookupField id="rizField"
+                                     datasource="elverSubscriptionDs"
+                                     optionsDatasource="rizDs"
+                                     property="riz"
+                                     width="250px"
+                                     required="true"
+
+                        />
+                    </row>
+                    <row>
+                        <label value="msg://ru.glavkniga.gklients.entity/ElverSubscription.requestDate"/>
+                        <dateField datasource="elverSubscriptionDs"
+                                   property="requestDate"
+                                   width="250px"/>
+                    </row>
+                    <row>
+                        <label value="msg://ru.glavkniga.gklients.entity/ElverSubscription.tarif"/>
+                        <lookupField id="tarifField"
+                                     datasource="elverSubscriptionDs"
+                                     optionsDatasource="tarifDs"
+                                     property="tarif"
+                                     width="250px"
+                                     required="true"
+                        />
+                    </row>
+                    <row>
+                        <label value="msg://ru.glavkniga.gklients.entity/ElverSubscription.issueStart"/>
+                        <lookupField id="dateStartField"
+                                     datasource="elverSubscriptionDs"
+                                     optionsDatasource="magazineIssueDs"
+                                     property="issueStart"
+                                     width="250px"
+                                     required="true"/>
+                    </row>
+                    <row>
+                        <label value="msg://ru.glavkniga.gklients.entity/ElverSubscription.issueEnd"/>
+                        <lookupField datasource="elverSubscriptionDs"
+                                     optionsDatasource="magazineIssueDs"
+                                     property="issueEnd"
+                                     width="250px"
+                                     required="true"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <vbox spacing="true">
+            <checkBox id="isRegKeySentToRiz"
+                      caption="msg://ru.glavkniga.gklients.entity/ElverSubscription.isRegKeySentToRiz"
+                      datasource="elverSubscriptionDs"
+                      property="isRegKeySentToRiz"/>
+            <checkBox id="isRegKeyUsed"
+                      caption="msg://ru.glavkniga.gklients.entity/ElverSubscription.isRegKeyUsed"
+                      datasource="elverSubscriptionDs"
+                      property="isRegKeyUsed"/>
+            <checkBox id="isPassSentToCustomer"
+                      caption="msg://ru.glavkniga.gklients.entity/ElverSubscription.isPassSentToCustomer"
+                      datasource="elverSubscriptionDs"
+                      property="isPassSentToCustomer"/>
+            <checkBox id="isTarifChecked"
+                      caption="msg://ru.glavkniga.gklients.entity/ElverSubscription.isTarifChecked"
+                      datasource="elverSubscriptionDs"
+                      property="isTarifChecked"/>
+        </vbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

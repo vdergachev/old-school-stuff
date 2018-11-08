@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ru.glavkniga.gklients.entity.Schedule"
+          name="schedule-view">
+        <property name="comments"/>
+        <property name="issueStart"/>
+        <property name="issueFinish"/>
+        <property name="issueSign"/>
+        <property name="printingRecevie"/>
+        <property name="siteUpload"/>
+        <property name="deliveryDate"/>
+        <property name="magazineIssue">
+            <property name="magazine">
+                <property name="magazineID"/>
+                <property name="magazineAbb"/>
+            </property>
+            <property name="month"/>
+            <property name="number"/>
+            <property name="year"/>
+            <property name="code"/>
+            <property name="issuePlannedDate"/>
+            <property name="price"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.MagazineIssue"
+          name="issue-with-magazine">
+        <property name="magazine">
+            <property name="magazineAbb"/>
+        </property>
+        <property name="month"/>
+        <property name="year"/>
+        <property name="number"/>
+        <property name="code"/>
+        <property name="issuePlannedDate"/>
+        <property name="price"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.ElverSubscription"
+          name="elverSubscription-full">
+        <property name="riz">
+            <property name="number"/>
+            <property name="name"/>
+            <property name="mailName"/>
+            <property name="mailPerson"/>
+            <property name="mailEmail"/>
+            <property name="mailPhone"/>
+        </property>
+        <property name="regkey"/>
+        <property name="requestDate"/>
+        <property name="tarif">
+            <property name="tarifName"/>
+            <property name="tarifNumber"/>
+        </property>
+        <property name="issueStart">
+            <property name="code"/>
+            <property name="issuePlannedDate"/>
+            <property name="number"/>
+            <property name="month"/>
+            <property name="year"/>
+        </property>
+        <property name="issueEnd">
+            <property name="code"/>
+            <property name="issuePlannedDate"/>
+            <property name="number"/>
+            <property name="month"/>
+            <property name="year"/>
+        </property>
+        <property name="isPassSentToCustomer"/>
+        <property name="isRegKeyUsed"/>
+        <property name="isTarifChecked"/>
+        <property name="isRegKeySentToRiz"/>
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="password"/>
+            <property name="isBlocked"/>
+        </property>
+        <property name="activation_date"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Riz"
+          name="riz-view">
+        <property name="number"/>
+        <property name="name"/>
+        <property name="city"/>
+        <property name="region"/>
+        <property name="podhost">
+            <property name="number"/>
+            <property name="name"/>
+        </property>
+        <property name="phone"/>
+        <property name="elverEmail"/>
+        <property name="wsName"/>
+        <property name="wsPerson"/>
+        <property name="wsAddress"/>
+        <property name="wsPhone"/>
+        <property name="wsEmail"/>
+        <property name="wsWebsite"/>
+        <property name="wsTerritory"/>
+        <property name="deliveryAddress"/>
+        <property name="deliveryEmail"/>
+        <property name="deliveryCompany"/>
+        <property name="orderPerson"/>
+        <property name="orderPhone"/>
+        <property name="orderEmail"/>
+        <property name="orderAccountist"/>
+        <property name="prPerson"/>
+        <property name="prPhone"/>
+        <property name="prEmail"/>
+        <property name="distrPerson"/>
+        <property name="distrEmail"/>
+        <property name="discount"/>
+        <property name="mailName"/>
+        <property name="mailPerson"/>
+        <property name="mailEmail"/>
+        <property name="mailPhone"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Riz"
+          name="riz-munobraz">
+        <property name="region"/>
+        <property name="munObraz">
+            <property name="oktmo"/>
+            <property name="title"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Client"
+          name="client-view">
+        <property name="name"/>
+        <property name="email"/>
+        <property name="itn"/>
+        <property name="password"/>
+        <property name="passwordHash"/>
+        <property name="phone"/>
+        <property name="emailHash"/>
+        <property name="isBlocked"/>
+        <property name="badEmail"/>
+        <property name="origin"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.RizContract"
+          name="rizContract-view">
+        <property name="riz">
+            <property name="number"/>
+            <property name="name"/>
+        </property>
+        <property name="contractNumber"/>
+        <property name="contractDate"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Schedule"
+          name="schedule-service">
+        <property name="magazineIssue">
+            <property name="magazine">
+                <property name="magazineAbb"/>
+                <property name="magazineID"/>
+            </property>
+            <property name="year"/>
+            <property name="number"/>
+            <property name="code"/>
+        </property>
+        <property name="comments"/>
+        <property name="siteUpload"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.ElverSubscription"
+          name="elverSubscription-browse">
+        <property name="client">
+            <property name="email"/>
+            <property name="name"/>
+            <property name="itn"/>
+            <property name="password"/>
+            <property name="isBlocked"/>
+        </property>
+        <property name="riz">
+            <property name="number"/>
+            <property name="name"/>
+        </property>
+        <property name="regkey"/>
+        <property name="requestDate"/>
+        <property name="tarif">
+            <property name="tarifName"/>
+            <property name="tarifNumber"/>
+        </property>
+        <property name="issueStart">
+            <property name="code"/>
+            <property name="issuePlannedDate"/>
+        </property>
+        <property name="issueEnd">
+            <property name="code"/>
+            <property name="issuePlannedDate"/>
+        </property>
+        <property name="isRegKeySentToRiz"/>
+        <property name="isRegKeyUsed"/>
+        <property name="isPassSentToCustomer"/>
+        <property name="isTarifChecked"/>
+        <property name="activation_date"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.TestMark"
+          extends="_local"
+          name="testMark-full">
+        <property name="test"
+                  view="_minimal">
+            <property name="testId"/>
+        </property>
+        <property name="email">
+            <property name="email"/>
+            <property name="dateSave"/>
+            <property name="emailIndex"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.TestEmail"
+          extends="_local"
+          name="testEmail-view">
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Riz"
+          extends="_minimal"
+          name="riz-with_contract">
+        <property name="contract"
+                  view="_minimal">
+            <property name="contractDate"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.ClientService"
+          extends="_local"
+          name="clientService-extended">
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="phone"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.WebstieQueue"
+          extends="_local"
+          name="websiteQueueFilters">
+        <property name="websiteQuieueFilter"
+                  view="_minimal">
+            <property name="paramName"/>
+            <property name="value"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+          name="subscriber-full">
+        <property name="isCompany"/>
+        <property name="isIp"/>
+        <property name="isCivil"/>
+        <property name="isWithWorkers"/>
+        <property name="isWithoutWorkers"/>
+        <property name="isOsno"/>
+        <property name="isUsn"/>
+        <property name="isEnvd"/>
+        <property name="isPsn"/>
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="phone"/>
+            <property name="isBlocked"/>
+            <property name="distributionSubscription"
+                      view="_minimal">
+                <property name="dateBegin"/>
+                <property name="dateStatusUpdate"/>
+                <property name="status"/>
+            </property>
+            <property name="password"/>
+        </property>
+        <property name="isEshn"/>
+        <property name="marker"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.DistributionSubscription"
+          extends="_local"
+          name="distribution-subscription-mainLinks">
+        <property name="distribution"
+                  view="_local">
+            <property name="template"
+                      view="_local"/>
+            <property name="distributionSubscription"
+                      view="_local"/>
+        </property>
+        <property name="client"
+                  view="_local">
+            <property name="clientDistributionSettings"
+                      view="_local"/>
+            <property name="elverSubscription"
+                      view="_local"/>
+            <property name="distributionSubscription"
+                      view="_local"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Distribution"
+          extends="_local"
+          name="distribution-mainLinks">
+        <property name="template"
+                  view="_minimal">
+            <property name="subject"/>
+            <property name="body"/>
+            <property name="emailType"/>
+            <property name="attachments"
+                      view="_minimal"/>
+        </property>
+        <property name="distributionSubscription"
+                  view="_minimal">
+            <property name="dateBegin"/>
+            <property name="dateStatusUpdate"/>
+            <property name="status"/>
+        </property>
+        <property name="attachments"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Client"
+          extends="_local"
+          name="client-full-view">
+        <property name="clientDistributionSettings"
+                  view="_minimal">
+            <property name="isCompany"/>
+            <property name="isIp"/>
+            <property name="isCivil"/>
+            <property name="isWithWorkers"/>
+            <property name="isWithoutWorkers"/>
+            <property name="isOsno"/>
+            <property name="isUsn"/>
+            <property name="isEnvd"/>
+            <property name="isEshn"/>
+            <property name="isPsn"/>
+            <property name="marker"/>
+            <property name="client">
+                <property name="name"/>
+                <property name="email"/>
+            </property>
+        </property>
+        <property name="elverSubscription"
+                  view="_minimal">
+            <property name="riz"
+                      view="_minimal"/>
+            <property name="regkey"/>
+            <property name="requestDate"/>
+            <property name="tarif"
+                      view="_minimal"/>
+            <property name="issueStart"
+                      view="_minimal"/>
+            <property name="issueEnd"
+                      view="_minimal"/>
+            <property name="isRegKeySentToRiz"/>
+            <property name="isRegKeyUsed"/>
+            <property name="isPassSentToCustomer"/>
+            <property name="isTarifChecked"/>
+            <property name="activation_date"/>
+        </property>
+        <property name="distributionSubscription"
+                  view="_minimal">
+            <property name="dateBegin"/>
+            <property name="dateStatusUpdate"/>
+            <property name="status"/>
+            <property name="distribution">
+                <property name="name"/>
+                <property name="description"/>
+            </property>
+            <property name="client">
+                <property name="name"/>
+                <property name="email"/>
+            </property>
+        </property>
+        <property name="onetimeMailings"
+                  view="_minimal"/>
+        <property name="origin"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.OnetimeMailing"
+          extends="_local"
+          name="onetimeMailing-withClient">
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="attachments"
+                  view="_minimal">
+            <property name="file"
+                      view="_minimal">
+                <property name="size"/>
+            </property>
+            <property name="attachmentMethod"/>
+        </property>
+        <property name="template"
+                  view="_minimal">
+            <property name="body"/>
+            <property name="subject"/>
+            <property name="attachments"
+                      view="_minimal"/>
+        </property>
+        <property name="mailingStatistics"
+                  view="_minimal">
+            <property name="planned"/>
+            <property name="sending"/>
+            <property name="completed"/>
+            <property name="failed"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.Token"
+          extends="_local"
+          name="token-view"/>
+    <view class="ru.glavkniga.gklients.entity.Attachment"
+          extends="_local"
+          name="attachment-view">
+        <property name="file"
+                  view="_minimal">
+            <property name="size"/>
+        </property>
+        <property name="emailTemplates"
+                  view="_minimal"/>
+        <property name="onetimeMailings"
+                  view="_minimal"/>
+        <property name="distributions"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.glavkniga.gklients.crudentity.GKNews"
+          extends="_local"
+          name="gKNews-full-view"
+          systemProperties="true">
+        <property name="images"
+                  view="_minimal">
+            <property name="image"/>
+            <property name="recordId"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.OnetimeMailing"
+          extends="_local"
+          name="onetimeMailing-view"/>
+    <view class="ru.glavkniga.gklients.entity.ElverSubscription"
+          extends="_local"
+          name="elverSubscription-token-view">
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="password"/>
+            <property name="phone"/>
+        </property>
+        <property name="riz"
+                  view="_minimal">
+            <property name="city"/>
+            <property name="region"/>
+            <property name="phone"/>
+            <property name="elverEmail"/>
+            <property name="deliveryAddress"/>
+            <property name="deliveryEmail"/>
+            <property name="deliveryCompany"/>
+            <property name="orderPerson"/>
+            <property name="orderPhone"/>
+            <property name="orderEmail"/>
+            <property name="orderAccountist"/>
+            <property name="prPerson"/>
+            <property name="prPhone"/>
+            <property name="prEmail"/>
+            <property name="distrPerson"/>
+            <property name="distrEmail"/>
+            <property name="wsName"/>
+            <property name="wsPerson"/>
+            <property name="wsAddress"/>
+            <property name="wsPhone"/>
+            <property name="wsEmail"/>
+            <property name="wsWebsite"/>
+            <property name="wsTerritory"/>
+            <property name="munObraz"
+                      view="_minimal"/>
+            <property name="discount"/>
+            <property name="mailName"/>
+            <property name="mailPerson"/>
+            <property name="mailEmail"/>
+            <property name="mailPhone"/>
+            <property name="contract"
+                      view="_minimal">
+                <property name="contractDate"/>
+            </property>
+        </property>
+        <property name="tarif"
+                  view="_minimal"/>
+        <property name="issueStart"
+                  view="_minimal">
+            <property name="magazine"
+                      view="_minimal">
+                <property name="magazineName"/>
+                <property name="magazineID"/>
+            </property>
+            <property name="month"/>
+            <property name="year"/>
+            <property name="number"/>
+            <property name="issuePlannedDate"/>
+        </property>
+        <property name="issueEnd"
+                  view="_minimal">
+            <property name="magazine"
+                      view="_minimal">
+                <property name="magazineName"/>
+                <property name="magazineID"/>
+            </property>
+            <property name="month"/>
+            <property name="year"/>
+            <property name="number"/>
+            <property name="issuePlannedDate"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.MailingStatistics"
+          extends="_local"
+          name="mailingStatistics-browse">
+        <property name="onetimeMailing"
+                  view="_minimal">
+            <property name="client"
+                      view="_minimal"/>
+            <property name="sendingDate"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.FailedEmail"
+          extends="_local"
+          name="failedEmails-withClient">
+        <property name="client"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.FailedEmail"
+          extends="_local"
+          name="failedEmails-view"/>
+    <view class="ru.glavkniga.gklients.entity.EmailTemplate"
+          extends="_local"
+          name="emailTemplate-view">
+        <property name="attachments"
+                  view="_minimal">
+            <property name="file"
+                      view="_minimal"/>
+            <property name="attachmentMethod"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.FailedEmail"
+          extends="_local"
+          name="failedEmail-forBadEmailsEditor">
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="badEmail"/>
+        </property>
+        <property name="onetimeMailing"
+                  view="_minimal">
+            <property name="sendingDate"/>
+        </property>
+    </view>
+    <view class="ru.glavkniga.gklients.entity.OnetimeMailing"
+          extends="_local"
+          name="onetimeMailing-forSendOut">
+        <property name="client"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="password"/>
+            <property name="phone"/>
+            <property name="emailHash"/>
+            <property name="passwordHash"/>
+            <property name="badEmail"/>
+            <property name="isBlocked"/>
+        </property>
+        <property name="attachments"
+                  view="_minimal">
+            <property name="file"
+                      view="_minimal">
+                <property name="size"/>
+            </property>
+            <property name="attachmentMethod"/>
+        </property>
+        <property name="template"
+                  view="_minimal">
+            <property name="subject"/>
+            <property name="body"/>
+            <property name="attachments"
+                      view="_minimal">
+                <property name="file"
+                          view="_minimal"/>
+                <property name="attachmentMethod"/>
+            </property>
+        </property>
+        <property name="mailingStatistics"
+                  view="_minimal">
+            <property name="planned"/>
+            <property name="sending"/>
+            <property name="completed"/>
+            <property name="failed"/>
+            <property name="failedEmails"
+                      view="_minimal"/>
+        </property>
+    </view>
+</views>

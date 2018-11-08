@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.distribution.DistributionEdit"
+        datasource="distributionDs"
+        messagesPack="ru.glavkniga.gklients.gui.distribution">
+    <dsContext>
+        <datasource id="distributionDs"
+                    class="ru.glavkniga.gklients.entity.Distribution"
+                    view="distribution-mainLinks"/>
+        <collectionDatasource id="templatesDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.EmailTemplate"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$EmailTemplate e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="allClientsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_local">
+            <query>
+                <![CDATA[select c from gklients$Client c]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="distributionSubscriptionsDs"
+                              class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                              refreshMode="NEVER"
+                              view="distribution-subscription-mainLinks"/>
+        <collectionDatasource id="selectedClientsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              refreshMode="NEVER"
+                              view="_local"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="740"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <groupBox id="clientsTokensGB" caption="msg://gbTokenListCap" visible="false">
+                <scrollBox height="480px"
+                           orientation="vertical">
+                    <tokenList id="clientsTokens"
+                               datasource="selectedClientsDs">
+                        <lookup lookup="true"
+                                optionsDatasource="allClientsDs"/>
+                    </tokenList>
+                </scrollBox>
+            </groupBox>
+            <vbox spacing="true">
+                <hbox spacing="true">
+                    <groupBox id="gbFields"
+                              caption="msg://gbFieldsCap">
+                        <fieldGroup id="fieldGroup1"
+                                    datasource="distributionDs">
+                            <column width="300px">
+                                <field property="name"/>
+                                <field property="description"
+                                       rows="3"/>
+                                <field property="status"/>
+                            </column>
+                        </fieldGroup>
+                    </groupBox>
+                    <groupBox id="gbFlags"
+                              caption="msg://gbFlagsCap"
+                              >
+                        <fieldGroup id="fieldGroup2"
+                                    datasource="distributionDs">
+                            <column width="100px">
+                                <field property="createAllowed"/>
+                                <field property="signedByDefault"/>
+                                <field property="personal"/>
+                                <field property="important"/>
+                            </column>
+                        </fieldGroup>
+                    </groupBox>
+                </hbox>
+                <groupBox caption="msg://gbEmailCap"
+                          spacing="true">
+                    <textField id="subjectField"
+                               caption="msg://subjectLabelMsg"
+                               datasource="distributionDs"
+                               property="subject"
+                               width="688px"/>
+                    <richTextArea id="bodyField"
+                                  caption="msg://bodyFieldMsg"
+                                  datasource="distributionDs"
+                                  property="content"
+                                  width="688px"/>
+                </groupBox>
+            </vbox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

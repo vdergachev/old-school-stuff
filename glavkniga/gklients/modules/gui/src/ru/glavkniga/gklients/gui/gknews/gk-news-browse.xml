@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.gknews.GKNewsBrowse"
+        focusComponent="gKNewsTable"
+        lookupComponent="gKNewsTable"
+        messagesPack="ru.glavkniga.gklients.gui.gknews">
+    <dsContext>
+        <groupDatasource id="gKNewsCollectionDs"
+                         class="ru.glavkniga.gklients.crudentity.GKNews"
+                         view="gKNews-full-view">
+            <query>
+                <![CDATA[select e from gklients$GKNews e]]>
+            </query>
+            <collectionDatasource id="imagesDs"
+                                  property="images"/>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <split height="100%"
+               minSplitPosition="100px"
+               orientation="vertical"
+               pos="70"
+               width="100%">
+            <groupTable id="gKNewsTable"
+                        height="100%"
+                        width="100%">
+                <actions>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="siteId"/>
+                    <column id="title"/>
+                    <column id="url"
+                            maxTextLength="50"/>
+                    <column id="isSent"/>
+                    <column id="leadText"
+                            maxTextLength="50"/>
+                    <column id="fullText"
+                            maxTextLength="50"/>
+                    <column id="newsDate"/>
+                    <column id="isCompany"/>
+                    <column id="isIp"/>
+                    <column id="isCivil"/>
+                    <column id="isWithWorkers"/>
+                    <column id="isWithoutWorkers"/>
+                    <column id="isOsno"/>
+                    <column id="isUsn"/>
+                    <column id="isEnvd"/>
+                    <column id="isPsn"/>
+                    <column id="isEshn"/>
+                    <column id="isOther"/>
+                </columns>
+                <rows datasource="gKNewsCollectionDs"/>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="removeBtn"
+                            action="gKNewsTable.remove"/>
+                </buttonsPanel>
+                <filter id="filter"
+                        applyTo="gKNewsTable"
+                        datasource="gKNewsCollectionDs">
+                    <properties include=".*"/>
+                </filter>
+            </groupTable>
+            <table id="imagesTable"
+                   width="100%">
+                <columns>
+                    <column id="siteId"/>
+                    <column id="image"/>
+                    <column id="recordId"/>
+                </columns>
+                <rows datasource="imagesDs"/>
+            </table>
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.distribution.DistributionBrowse"
+        focusComponent="distributionsTable"
+        lookupComponent="distributionsTable"
+        messagesPack="ru.glavkniga.gklients.gui.distribution">
+    <dsContext>
+        <groupDatasource id="distributionsDs"
+                         class="ru.glavkniga.gklients.entity.Distribution"
+                         view="distribution-mainLinks">
+            <query>
+                <![CDATA[select e from gklients$Distribution e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="distributionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="distributionsTable"
+                datasource="distributionsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="distributionsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="description"
+                maxTextLength="50"/>
+                <column id="subject"/>
+                <column id="createAllowed"/>
+                <column id="signedByDefault"/>
+                <column id="personal"/>
+                <column id="important"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="distributionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="distributionsTable.create"/>
+                <button id="editBtn"
+                        action="distributionsTable.edit"/>
+                <button id="removeBtn"
+                        action="distributionsTable.remove"/>
+                <button id="refreshBtn"
+                        action="distributionsTable.refresh"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

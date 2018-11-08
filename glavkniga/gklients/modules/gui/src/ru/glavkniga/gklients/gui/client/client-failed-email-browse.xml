@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.client.ClientFailedEmailBrowse"
+        focusComponent="clientsTable"
+        lookupComponent="clientsTable"
+        messagesPack="ru.glavkniga.gklients.gui.client">
+    <dsContext>
+        <collectionDatasource id="clientsDs"
+                              class="ru.glavkniga.gklients.entity.Client">
+            <query>
+                <![CDATA[select e from gklients$Client e 
+join gklients$FailedEmail m 
+on m.client.id = e.id]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="failedEmailsDs"
+                              class="ru.glavkniga.gklients.entity.FailedEmail"
+                              view="failedEmail-forBadEmailsEditor">
+            <query>
+                <![CDATA[select e from gklients$FailedEmail e 
+WHERE e.client.id = :ds$clientsDs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <split height="100%"
+               orientation="horizontal"
+               width="100%">
+            <vbox id="clientsBox"
+                  expand="clientsTable"
+                  height="100%"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="clientsTable"
+                        datasource="clientsDs"
+                        margin="false,true,false,true">
+                    <properties include=".*"/>
+                </filter>
+                <table id="clientsTable"
+                       width="100%">
+                    <actions>
+                        <action id="refresh"/>
+                        <action id="excel"/>
+                    </actions>
+                    <columns>
+                        <column id="email"/>
+                        <column id="badEmail"/>
+                    </columns>
+                    <rows datasource="clientsDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="refreshBtn"
+                                action="clientsTable.refresh"/>
+                        <button id="excelBtn"
+                                action="clientsTable.excel"/>
+                        <button id="btnMarkAsBad"
+                                caption="msg://btnMarkAsBadCap"
+                                enable="false"
+                                invoke="onBtnMarkAsBadClick"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+            <vbox id="mailingsBox"
+                  expand="failedEmailsTable"
+                  height="100%"
+                  spacing="true">
+                <label height="30px"
+                       value="msg://errorsLabelCap"/>
+                <table id="failedEmailsTable"
+                       width="100%">
+                    <columns>
+                        <column id="onetimeMailing.subject"/>
+                        <column id="onetimeMailing.sendingDate"/>
+                        <column id="reason"/>
+                    </columns>
+                    <rows datasource="failedEmailsDs"/>
+                </table>
+            </vbox>
+        </split>
+    </layout>
+</window>

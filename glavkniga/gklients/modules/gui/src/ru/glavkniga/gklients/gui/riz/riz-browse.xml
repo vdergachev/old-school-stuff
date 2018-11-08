@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.riz.RizBrowse"
+        focusComponent="rizesTable"
+        lookupComponent="rizesTable"
+        messagesPack="ru.glavkniga.gklients.gui.riz">
+    <dsContext>
+        <datasource id="rizDs"
+                    class="ru.glavkniga.gklients.entity.Riz"
+                    view="riz-view"/>
+        <hierarchicalDatasource id="rizesDs"
+                                class="ru.glavkniga.gklients.entity.Riz"
+                                hierarchyProperty="podhost"
+                                view="riz-view">
+            <query>
+                <![CDATA[select e from gklients$Riz e]]>
+            </query>
+        </hierarchicalDatasource>
+        <collectionDatasource id="rizOptionsDs"
+                              class="ru.glavkniga.gklients.entity.Riz"
+                              view="riz-view">
+            <query>
+                <![CDATA[select e from gklients$Riz e where e.podhost IS NULL and e.id <> :ds$rizesDs order by e.number]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               pos="70"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="rizesTable"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        datasource="rizesDs"
+                        defaultMode="fts"
+                        modeSwitchVisible="true">
+                    <properties include=".*"/>
+                </filter>
+                <treeTable id="rizesTable"
+                           width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                        <action id="excel"/>
+                    </actions>
+                    <columns>
+                        <column id="number"/>
+                        <column id="name"/>
+                        <column id="city"/>
+                        <column id="region"/>
+                        <column id="podhost"
+                                collapsed="true"/>
+                        <column id="phone"
+                                collapsed="true"/>
+                        <column id="elverEmail"
+                                collapsed="true"/>
+                        <column id="wsName"
+                                collapsed="true"/>
+                        <column id="wsPerson"
+                                collapsed="true"/>
+                        <column id="wsAddress"
+                                collapsed="true"/>
+                        <column id="wsPhone"
+                                collapsed="true"/>
+                        <column id="wsEmail"
+                                collapsed="true"/>
+                        <column id="wsWebsite"
+                                collapsed="true"/>
+                        <column id="wsTerritory"
+                                collapsed="true"/>
+                        <column id="deliveryAddress"
+                                collapsed="true"/>
+                        <column id="deliveryEmail"
+                                collapsed="true"/>
+                        <column id="deliveryCompany"
+                                collapsed="true"/>
+                        <column id="orderPerson"
+                                collapsed="true"/>
+                        <column id="orderPhone"
+                                collapsed="true"/>
+                        <column id="orderEmail"
+                                collapsed="true"/>
+                        <column id="orderAccountist"
+                                collapsed="true"/>
+                        <column id="prPerson"
+                                collapsed="true"/>
+                        <column id="prPhone"
+                                collapsed="true"/>
+                        <column id="prEmail"
+                                collapsed="true"/>
+                        <column id="distrPerson"
+                                collapsed="true"/>
+                        <column id="distrEmail"
+                                collapsed="true"/>
+                        <column id="discount"
+                                collapsed="true"/>
+                        <column id="mailName"
+                                collapsed="true"/>
+                        <column id="mailPerson"
+                                collapsed="true"/>
+                        <column id="mailPhone"
+                                collapsed="true"/>
+                        <column id="mailEmail"
+                                collapsed="true"/>
+                    </columns>
+                    <rows datasource="rizesDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="rizesTable.create"/>
+                        <button id="editBtn"
+                                action="rizesTable.edit"/>
+                        <button id="removeBtn"
+                                action="rizesTable.remove"/>
+                        <button id="excelBtn"
+                                action="rizesTable.excel"/>
+                        <button id="terrBtn"
+                                caption="msg://Set Territory"
+                                enable="false"
+                                invoke="onTerrbtnClick"/>
+                        <upload id="uploadField"/>
+                        <button id="rizWebsiteExport"
+                                caption="msg://rizWebsiteExportCap"
+                                invoke="onRizExportClick"/>
+                    </buttonsPanel>
+                </treeTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <tabSheet id="fieldGroupBox">
+                    <tab id="tabMain"
+                         caption="msg://tabMainCap">
+                        <vbox>
+                            <groupBox id="gbMain"
+                                      caption="msg://gbMainCap"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup1"
+                                            datasource="rizDs">
+                                    <column>
+                                        <field id="number"
+                                               width="250px"/>
+                                        <field id="name"
+                                               rows="2"
+                                               width="250px"/>
+                                        <field id="city"
+                                               width="250px"/>
+                                        <field id="region"
+                                               width="250px"/>
+                                        <field id="podhost"
+                                               optionsDatasource="rizOptionsDs"
+                                               width="250px"/>
+                                        <field id="discount"
+                                               width="250px"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                            <groupBox id="gbMail"
+                                      caption="msg://gbMailCap"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup4"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="mailName"
+                                               rows="2"/>
+                                        <field id="mailEmail"/>
+                                        <field id="mailPerson"/>
+                                        <field id="mailPhone"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                        </vbox>
+                    </tab>
+                    <tab id="tabDistr"
+                         caption="msg://tabDistrCap">
+                        <scrollBox height="100%"
+                                   orientation="vertical"
+                                   spacing="true">
+                            <vbox>
+                                <groupBox id="gb1"
+                                          caption="msg://gbDistr1"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup2_1"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="phone"/>
+                                            <field id="elverEmail"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                                <groupBox id="gb2"
+                                          caption="msg://gbDistr2"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup2_2"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="deliveryAddress"
+                                                   rows="2"/>
+                                            <field id="deliveryEmail"
+                                                   rows="2"/>
+                                            <field id="deliveryCompany"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                                <groupBox id="gb3"
+                                          caption="msg://gbDistr3"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup2_3"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="orderPerson"
+                                                   rows="2"/>
+                                            <field id="orderPhone"/>
+                                            <field id="orderEmail"
+                                                   rows="2"/>
+                                            <field id="orderAccountist"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                            </vbox>
+                        </scrollBox>
+                    </tab>
+                    <tab id="tabPr"
+                         caption="msg://tabPrCap">
+                        <scrollBox height="100%"
+                                   orientation="vertical"
+                                   spacing="true">
+                            <vbox>
+                                <groupBox id="gb4"
+                                          caption="msg://gbPr1"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup3_1"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="prPerson"
+                                                   rows="2"/>
+                                            <field id="prPhone"/>
+                                            <field id="prEmail"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                                <groupBox id="gb5"
+                                          caption="msg://gbPr2"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup3_2"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="distrPerson"
+                                                   rows="2"/>
+                                            <field id="distrEmail"
+                                                   rows="2"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                                <groupBox id="gb6"
+                                          caption="msg://gbPr3"
+                                          width="440px">
+                                    <fieldGroup id="fieldGroup3_3"
+                                                datasource="rizDs">
+                                        <column width="250px">
+                                            <field id="wsName"/>
+                                            <field id="wsPerson"/>
+                                            <field id="wsAddress"
+                                                   rows="2"/>
+                                            <field id="wsPhone"/>
+                                            <field id="wsEmail"/>
+                                            <field id="wsWebsite"/>
+                                            <field id="wsTerritory"
+                                                   rows="4"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                            </vbox>
+                        </scrollBox>
+                    </tab>
+                </tabSheet>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            caption="mainMsg://actions.Ok"
+                            icon="icons/ok.png"
+                            invoke="save"/>
+                    <button id="cancelBtn"
+                            caption="mainMsg://actions.Cancel"
+                            icon="icons/cancel.png"
+                            invoke="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

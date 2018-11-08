@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://rizByPeriodCap"
+        class="ru.glavkniga.gklients.gui.screens.RizByPeriodReportExecutor"
+        messagesPack="ru.glavkniga.gklients.gui.screens">
+     <layout expand="bpReport"
+            spacing="true">
+        <grid id="gReport"
+              spacing="true">
+            <columns count="2"/>
+            <rows>
+                <row>
+                    <label id="lFrom"
+                           align="MIDDLE_LEFT"
+                           value="msg://dfFromCap"/>
+                    <dateField id="dfFrom"
+                               align="MIDDLE_CENTER"
+                               dateFormat="dd.MM.yyyy"
+                               width="500px"/>
+                </row>
+                <row>
+                    <label id="lTo"
+                           align="MIDDLE_LEFT"
+                           value="msg://lToCap"/>
+                    <dateField id="dfTo"
+                               align="MIDDLE_LEFT"
+                               dateFormat="dd.MM.yyyy"
+                               width="500px"/>
+                </row>
+            </rows>
+        </grid>
+        <buttonsPanel id="bpReport">
+            <button id="bOk"
+                    caption="msg://bOk"
+                    invoke="onBokClick"/>
+            <button id="bCancel"
+                    caption="msg://bCancel"
+                    invoke="onBcancelClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

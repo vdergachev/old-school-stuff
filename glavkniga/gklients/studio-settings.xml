@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<studio>
+    <dbScripts>
+        <excludes>
+            <postgres>
+            </postgres>
+        </excludes>
+    </dbScripts>
+    <screenDesigner>
+        <screen module="gui"
+                presentSize="1024x768"
+                reference="ru/glavkniga/gklients/gui/distributionsubscription/distribution-subscription-browse.xml"/>
+    </screenDesigner>
+</studio>

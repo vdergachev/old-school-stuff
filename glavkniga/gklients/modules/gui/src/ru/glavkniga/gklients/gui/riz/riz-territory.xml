@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://territoryEditor"
+        class="ru.glavkniga.gklients.gui.riz.RizTerritory"
+        datasource="rizDs"
+        messagesPack="ru.glavkniga.gklients.gui.riz">
+    <dsContext>
+        <datasource id="rizDs"
+                    class="ru.glavkniga.gklients.entity.Riz"
+                    view="riz-munobraz">
+            <collectionDatasource id="rizMunObraz"
+                                  property="munObraz"/>
+        </datasource>
+        <collectionDatasource id="RegionDs"
+                              class="ru.glavkniga.gklients.entity.MunObraz"
+                              view="_local">
+            <query>
+                <![CDATA[
+                select e from gklients$MunObraz e order by e.title
+                
+            ]]>
+                <filter>
+                    <c>e.region = :custom$RegionValue</c>
+                </filter>
+            </query>
+        </collectionDatasource>
+
+    </dsContext>
+    <dialogMode
+        height="800"
+        width="950"/>
+    <layout expand="tables"
+            spacing="true">
+        <lookupField id="regEnumField"
+                     caption="msg://region"
+                     width="360px"/>
+        <vbox id="tables">
+            <hbox spacing="true">
+                <table id="optionsTable"
+                       height="640px"
+                       multiselect="true"
+                       width="425px">
+                    <columns>
+                        <column id="title"/>
+                        <column id="oktmo"/>
+                    </columns>
+                    <rows datasource="RegionDs"/>
+                </table>
+                <vbox>
+                    <button id="addSelected"
+                            icon="icons/report-wizard-next.png"
+                            invoke="onAddSelected"/>
+                    <button id="removeSelected"
+                            icon="icons/report-wizard-previous.png"
+                            invoke="onRemoveSelected"/>
+                </vbox>
+                <table id="selectedTable"
+                       height="640px"
+                       multiselect="true"
+                       width="425px">
+                    <columns>
+                        <column id="title"/>
+                        <column id="oktmo"/>
+                    </columns>
+                    <rows datasource="rizMunObraz"/>
+                </table>
+            </hbox>
+        </vbox>
+        <frame screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.distributionsubscription.DistributionSubscriptionEdit"
+        datasource="distributionSubscriptionDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.glavkniga.gklients.gui.distributionsubscription">
+    <dsContext>
+        <datasource id="distributionSubscriptionDs"
+                    class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                    view="distribution-subscription-mainLinks"/>
+        <collectionDatasource id="clientsDs"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="distributionsDs"
+                              class="ru.glavkniga.gklients.entity.Distribution"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Distribution e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="clientSubscriptionsDs"
+                              class="ru.glavkniga.gklients.entity.DistributionSubscription"
+                              view="distribution-subscription-mainLinks">
+            <query>
+                <![CDATA[select e from gklients$DistributionSubscription e where e.client.id = :ds$distributionSubscriptionDs.client and e.distribution.id = :ds$distributionSubscriptionDs.distribution]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <groupBox id="clientGb"
+                  caption="msg://clientGbCap">
+            <grid spacing="true">
+                <columns count="2"/>
+                <rows>
+                    <row>
+                        <label id="clientLabel"
+                               caption="msg://clientGbCap"/>
+                        <lookupField id="clientLookup"
+                                     datasource="distributionSubscriptionDs"
+                                     property="client"
+                                     optionsDatasource="clientsDs"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <fieldGroup id="fieldGroup"
+                    datasource="distributionSubscriptionDs">
+            <column width="250px">
+                <field optionsDatasource="distributionsDs"
+                       property="distribution"/>
+                <field property="dateBegin"/>
+                <field property="dateStatusUpdate"/>
+                <field property="status"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

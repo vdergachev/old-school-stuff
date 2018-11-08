@@ -1,0 +1,208 @@
+
+START Event Log / MDaemon PRO v17.0.0, SMTP (out) log information
+-------------------------------------------------------------------------------
+Event Time/Date             Event Description
+-------------------------------------------------------------------------------
+Mon 2017-07-03 16:04:10.628: [339626] Session 339626; child 0004
+Mon 2017-07-03 16:04:10.628: [339626] Parsing message <f:\mdaemon\queues\remote\pd50000011399.msg>
+Mon 2017-07-03 16:04:10.628: [339626] *  From: subscribers@subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.628: [339626] *  To: krasteks@yandex.ru
+Mon 2017-07-03 16:04:10.628: [339626] *  Subject: «Главная книга»: Подтверждение подписки на электронный журнал
+Mon 2017-07-03 16:04:10.628: [339626] *  Size (bytes): 15151
+Mon 2017-07-03 16:04:10.628: [339626] *  Message-ID: <1484709429.1262.1499087228440.JavaMail.root@ubuntu-backup>
+Mon 2017-07-03 16:04:10.631: [339626] Resolving MX record for yandex.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.632: [339626] *  P=010 S=000 D=yandex.ru TTL=(1) MX=[mx.yandex.ru]
+Mon 2017-07-03 16:04:10.632: [339626] Attempting SMTP connection to mx.yandex.ru
+Mon 2017-07-03 16:04:10.632: [339626] Resolving A record for mx.yandex.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.634: [339626] *  D=mx.yandex.ru TTL=(4) A=[213.180.193.89]
+Mon 2017-07-03 16:04:10.634: [339626] *  D=mx.yandex.ru TTL=(4) A=[87.250.250.89]
+Mon 2017-07-03 16:04:10.634: [339626] *  D=mx.yandex.ru TTL=(4) A=[93.158.134.89]
+Mon 2017-07-03 16:04:10.634: [339626] *  D=mx.yandex.ru TTL=(4) A=[213.180.204.89]
+Mon 2017-07-03 16:04:10.634: [339626] *  D=mx.yandex.ru TTL=(4) A=[77.88.21.89]
+Mon 2017-07-03 16:04:10.634: [339626] Randomly picked 213.180.204.89 from list of possible hosts
+Mon 2017-07-03 16:04:10.634: [339626] Attempting SMTP connection to 213.180.204.89:25
+Mon 2017-07-03 16:04:10.634: [339626] Waiting for socket connection...
+Mon 2017-07-03 16:04:10.640: [339626] *  Connection established 10.50.11.63:61379 --> 213.180.204.89:25
+Mon 2017-07-03 16:04:10.640: [339626] Waiting for protocol to start...
+Mon 2017-07-03 16:04:10.669: [339626] <-- 220 mxfront2j.mail.yandex.net (Want to use Yandex.Mail for your domain? Visit http://pdd.yandex.ru)
+Mon 2017-07-03 16:04:10.669: [339626] --> EHLO subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-mxfront2j.mail.yandex.net
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-8BITMIME
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-PIPELINING
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-SIZE 42991616
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-STARTTLS
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250-DSN
+Mon 2017-07-03 16:04:10.676: [339626] <-- 250 ENHANCEDSTATUSCODES
+Mon 2017-07-03 16:04:10.676: [339626] --> MAIL From:<subscribers@subscribers.glavkniga.ru> SIZE=15151
+Mon 2017-07-03 16:04:10.683: [339626] <-- 250 2.1.0 <subscribers@subscribers.glavkniga.ru> ok
+Mon 2017-07-03 16:04:10.683: [339626] --> RCPT To:<krasteks@yandex.ru>
+Mon 2017-07-03 16:04:10.700: [339626] <-- 250 2.1.5 <krasteks@yandex.ru> recipient ok
+Mon 2017-07-03 16:04:10.700: [339626] --> DATA
+Mon 2017-07-03 16:04:10.707: [339626] <-- 354 Enter mail, end with "." on a line by itself
+Mon 2017-07-03 16:04:10.707: [339626] Sending <f:\mdaemon\queues\remote\pd50000011399.msg> to [213.180.204.89]
+Mon 2017-07-03 16:04:10.707: [339626] Transfer Complete
+Mon 2017-07-03 16:04:11.745: [339626] <-- 250 2.0.0 Ok: queued on mxfront2j.mail.yandex.net as 1499087054-BUr51Uvww4-4DCCKC7x
+Mon 2017-07-03 16:04:11.745: [339626] --> QUIT
+Mon 2017-07-03 16:04:11.755: [339626] <-- 221 2.0.0 Closing connection.
+Mon 2017-07-03 16:04:11.755: [339626] SMTP session successful (Bytes in/out: 493/15290)
+Mon 2017-07-03 16:04:11.755: ----------
+Mon 2017-07-03 16:04:10.624: [339623] Session 339623; child 0001
+Mon 2017-07-03 16:04:10.624: [339623] Parsing message <f:\mdaemon\queues\remote\pd50000011396.msg>
+Mon 2017-07-03 16:04:10.625: [339623] *  From: subscribers@subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.625: [339623] *  To: findir@ufafito.ru
+Mon 2017-07-03 16:04:10.625: [339623] *  Subject: «Главная книга»: Подтверждение подписки на электронный журнал
+Mon 2017-07-03 16:04:10.625: [339623] *  Size (bytes): 15281
+Mon 2017-07-03 16:04:10.625: [339623] *  Message-ID: <631572564.1263.1499087228440.JavaMail.root@ubuntu-backup>
+Mon 2017-07-03 16:04:10.629: [339623] Resolving MX record for ufafito.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.720: [339623] *  P=010 S=000 D=ufafito.ru TTL=(10) MX=[mx.yandex.ru]
+Mon 2017-07-03 16:04:10.720: [339623] Attempting SMTP connection to mx.yandex.ru
+Mon 2017-07-03 16:04:10.721: [339623] Resolving A record for mx.yandex.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.722: [339623] *  D=mx.yandex.ru TTL=(4) A=[93.158.134.89]
+Mon 2017-07-03 16:04:10.722: [339623] *  D=mx.yandex.ru TTL=(4) A=[213.180.204.89]
+Mon 2017-07-03 16:04:10.722: [339623] *  D=mx.yandex.ru TTL=(4) A=[77.88.21.89]
+Mon 2017-07-03 16:04:10.722: [339623] *  D=mx.yandex.ru TTL=(4) A=[213.180.193.89]
+Mon 2017-07-03 16:04:10.722: [339623] *  D=mx.yandex.ru TTL=(4) A=[87.250.250.89]
+Mon 2017-07-03 16:04:10.722: [339623] Randomly picked 213.180.193.89 from list of possible hosts
+Mon 2017-07-03 16:04:10.722: [339623] Attempting SMTP connection to 213.180.193.89:25
+Mon 2017-07-03 16:04:10.722: [339623] Waiting for socket connection...
+Mon 2017-07-03 16:04:10.726: [339623] *  Connection established 10.50.11.63:61381 --> 213.180.193.89:25
+Mon 2017-07-03 16:04:10.726: [339623] Waiting for protocol to start...
+Mon 2017-07-03 16:04:10.751: [339623] <-- 220 mxfront8h.mail.yandex.net (Want to use Yandex.Mail for your domain? Visit http://pdd.yandex.ru)
+Mon 2017-07-03 16:04:10.751: [339623] --> EHLO subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-mxfront8h.mail.yandex.net
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-8BITMIME
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-PIPELINING
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-SIZE 42991616
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-STARTTLS
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250-DSN
+Mon 2017-07-03 16:04:10.754: [339623] <-- 250 ENHANCEDSTATUSCODES
+Mon 2017-07-03 16:04:10.754: [339623] --> MAIL From:<subscribers@subscribers.glavkniga.ru> SIZE=15281
+Mon 2017-07-03 16:04:10.760: [339623] <-- 250 2.1.0 <subscribers@subscribers.glavkniga.ru> ok
+Mon 2017-07-03 16:04:10.760: [339623] --> RCPT To:<findir@ufafito.ru>
+Mon 2017-07-03 16:04:10.774: [339623] <-- 250 2.1.5 <findir@ufafito.ru> recipient ok
+Mon 2017-07-03 16:04:10.774: [339623] --> DATA
+Mon 2017-07-03 16:04:10.777: [339623] <-- 354 Enter mail, end with "." on a line by itself
+Mon 2017-07-03 16:04:10.777: [339623] Sending <f:\mdaemon\queues\remote\pd50000011396.msg> to [213.180.193.89]
+Mon 2017-07-03 16:04:10.777: [339623] Transfer Complete
+Mon 2017-07-03 16:04:12.093: [339623] <-- 250 2.0.0 Ok: queued on mxfront8h.mail.yandex.net as 1499087054-t30QE4AQYd-4DQaeA7i
+Mon 2017-07-03 16:04:12.093: [339623] --> QUIT
+Mon 2017-07-03 16:04:12.096: [339623] <-- 221 2.0.0 Closing connection.
+Mon 2017-07-03 16:04:12.096: [339623] SMTP session successful (Bytes in/out: 492/15419)
+Mon 2017-07-03 16:04:12.096: ----------
+Mon 2017-07-03 16:04:10.626: [339625] Session 339625; child 0003
+Mon 2017-07-03 16:04:10.626: [339625] Parsing message <f:\mdaemon\queues\remote\pd50000011398.msg>
+Mon 2017-07-03 16:04:10.627: [339625] *  From: subscribers@subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.627: [339625] *  To: 2942666@mail.ru
+Mon 2017-07-03 16:04:10.627: [339625] *  Subject: «Главная книга»: Подтверждение подписки на электронный журнал
+Mon 2017-07-03 16:04:10.627: [339625] *  Size (bytes): 16288
+Mon 2017-07-03 16:04:10.627: [339625] *  Message-ID: <750152212.1260.1499087228440.JavaMail.root@ubuntu-backup>
+Mon 2017-07-03 16:04:10.630: [339625] Resolving MX record for mail.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.636: [339625] *  P=010 S=000 D=mail.ru TTL=(10) MX=[mxs.mail.ru]
+Mon 2017-07-03 16:04:10.636: [339625] Attempting SMTP connection to mxs.mail.ru
+Mon 2017-07-03 16:04:10.636: [339625] Resolving A record for mxs.mail.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.637: [339625] *  D=mxs.mail.ru TTL=(0) A=[94.100.180.104]
+Mon 2017-07-03 16:04:10.637: [339625] *  D=mxs.mail.ru TTL=(0) A=[94.100.180.31]
+Mon 2017-07-03 16:04:10.637: [339625] Randomly picked 94.100.180.31 from list of possible hosts
+Mon 2017-07-03 16:04:10.638: [339625] Attempting SMTP connection to 94.100.180.31:25
+Mon 2017-07-03 16:04:10.638: [339625] Waiting for socket connection...
+Mon 2017-07-03 16:04:10.640: [339625] *  Connection established 10.50.11.63:61380 --> 94.100.180.31:25
+Mon 2017-07-03 16:04:10.640: [339625] Waiting for protocol to start...
+Mon 2017-07-03 16:04:10.642: [339625] <-- 220 Mail.Ru ESMTP
+Mon 2017-07-03 16:04:10.642: [339625] --> EHLO subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.645: [339625] <-- 250-mx101.mail.ru ready to serve
+Mon 2017-07-03 16:04:10.645: [339625] <-- 250-STARTTLS
+Mon 2017-07-03 16:04:10.645: [339625] <-- 250-SIZE 73400320
+Mon 2017-07-03 16:04:10.645: [339625] <-- 250 8BITMIME
+Mon 2017-07-03 16:04:10.645: [339625] --> MAIL From:<subscribers@subscribers.glavkniga.ru> SIZE=16288
+Mon 2017-07-03 16:04:14.196: [339625] <-- 250 OK
+Mon 2017-07-03 16:04:14.197: [339625] --> RCPT To:<2942666@mail.ru>
+Mon 2017-07-03 16:04:14.199: [339625] <-- 250 OK
+Mon 2017-07-03 16:04:14.199: [339625] --> DATA
+Mon 2017-07-03 16:04:14.204: [339625] <-- 354 Go ahead
+Mon 2017-07-03 16:04:14.204: [339625] Sending <f:\mdaemon\queues\remote\pd50000011398.msg> to [94.100.180.31]
+Mon 2017-07-03 16:04:14.204: [339625] Transfer Complete
+Mon 2017-07-03 16:04:16.264: [339625] <-- 250 OK id=1dS11W-0005NR-IL
+Mon 2017-07-03 16:04:16.264: [339625] --> QUIT
+Mon 2017-07-03 16:04:16.267: [339625] <-- 221 mx101.mail.ru closing connection
+Mon 2017-07-03 16:04:16.267: [339625] SMTP session successful (Bytes in/out: 196/16424)
+Mon 2017-07-03 16:04:16.267: ----------
+Mon 2017-07-03 16:04:10.625: [339624] Session 339624; child 0002
+Mon 2017-07-03 16:04:10.625: [339624] Parsing message <f:\mdaemon\queues\remote\pd50000011397.msg>
+Mon 2017-07-03 16:04:10.626: [339624] *  From: subscribers@subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.626: [339624] *  To: yulya1105@bk.ru
+Mon 2017-07-03 16:04:10.626: [339624] *  Subject: «Главная книга»: Подтверждение подписки на электронный журнал
+Mon 2017-07-03 16:04:10.626: [339624] *  Size (bytes): 8997
+Mon 2017-07-03 16:04:10.626: [339624] *  Message-ID: <112043930.1261.1499087228440.JavaMail.root@ubuntu-backup>
+Mon 2017-07-03 16:04:10.630: [339624] Resolving MX record for bk.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.631: [339624] *  P=010 S=000 D=bk.ru TTL=(18) MX=[mxs.mail.ru]
+Mon 2017-07-03 16:04:10.631: [339624] Attempting SMTP connection to mxs.mail.ru
+Mon 2017-07-03 16:04:10.631: [339624] Resolving A record for mxs.mail.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:04:10.632: [339624] *  D=mxs.mail.ru TTL=(0) A=[94.100.180.104]
+Mon 2017-07-03 16:04:10.632: [339624] *  D=mxs.mail.ru TTL=(0) A=[94.100.180.31]
+Mon 2017-07-03 16:04:10.632: [339624] Randomly picked 94.100.180.31 from list of possible hosts
+Mon 2017-07-03 16:04:10.632: [339624] Attempting SMTP connection to 94.100.180.31:25
+Mon 2017-07-03 16:04:10.633: [339624] Waiting for socket connection...
+Mon 2017-07-03 16:04:10.636: [339624] *  Connection established 10.50.11.63:61378 --> 94.100.180.31:25
+Mon 2017-07-03 16:04:10.636: [339624] Waiting for protocol to start...
+Mon 2017-07-03 16:04:10.638: [339624] <-- 220 Mail.Ru ESMTP
+Mon 2017-07-03 16:04:10.638: [339624] --> EHLO subscribers.glavkniga.ru
+Mon 2017-07-03 16:04:10.642: [339624] <-- 250-mx9.mail.ru ready to serve
+Mon 2017-07-03 16:04:10.642: [339624] <-- 250-STARTTLS
+Mon 2017-07-03 16:04:10.642: [339624] <-- 250-SIZE 73400320
+Mon 2017-07-03 16:04:10.642: [339624] <-- 250 8BITMIME
+Mon 2017-07-03 16:04:10.642: [339624] --> MAIL From:<subscribers@subscribers.glavkniga.ru> SIZE=8997
+Mon 2017-07-03 16:04:14.074: [339624] <-- 250 OK
+Mon 2017-07-03 16:04:14.074: [339624] --> RCPT To:<yulya1105@bk.ru>
+Mon 2017-07-03 16:04:14.077: [339624] <-- 250 OK
+Mon 2017-07-03 16:04:14.077: [339624] --> DATA
+Mon 2017-07-03 16:04:14.081: [339624] <-- 354 Go ahead
+Mon 2017-07-03 16:04:14.081: [339624] Sending <f:\mdaemon\queues\remote\pd50000011397.msg> to [94.100.180.31]
+Mon 2017-07-03 16:04:14.081: [339624] Transfer Complete
+Mon 2017-07-03 16:04:19.342: [339624] <-- 250 OK id=1dS11X-0006nr-WA
+Mon 2017-07-03 16:04:19.343: [339624] --> QUIT
+Mon 2017-07-03 16:04:19.345: [339624] <-- 221 mx9.mail.ru closing connection
+Mon 2017-07-03 16:04:19.345: [339624] SMTP session successful (Bytes in/out: 192/9132)
+Mon 2017-07-03 16:04:19.345: ----------
+Mon 2017-07-03 16:25:46.257: [339639] Session 339639; child 0001
+Mon 2017-07-03 16:25:46.257: [339639] Parsing message <f:\mdaemon\queues\remote\pd50000011400.msg>
+Mon 2017-07-03 16:25:46.257: [339639] *  From: subscribers@subscribers.glavkniga.ru
+Mon 2017-07-03 16:25:46.257: [339639] *  To: alena-c-2017@yandex.ru
+Mon 2017-07-03 16:25:46.257: [339639] *  Subject: «Главная книга»: Подтверждение подписки на электронный журнал
+Mon 2017-07-03 16:25:46.257: [339639] *  Size (bytes): 18445
+Mon 2017-07-03 16:25:46.257: [339639] *  Message-ID: <715289954.1270.1499088523461.JavaMail.root@ubuntu-backup>
+Mon 2017-07-03 16:25:46.258: [339639] Resolving MX record for yandex.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:25:46.259: [339639] *  P=010 S=000 D=yandex.ru TTL=(0) MX=[mx.yandex.ru]
+Mon 2017-07-03 16:25:46.259: [339639] Attempting SMTP connection to mx.yandex.ru
+Mon 2017-07-03 16:25:46.260: [339639] Resolving A record for mx.yandex.ru (DNS Server: 10.106.78.13)...
+Mon 2017-07-03 16:25:46.261: [339639] *  D=mx.yandex.ru TTL=(3) A=[87.250.250.89]
+Mon 2017-07-03 16:25:46.261: [339639] *  D=mx.yandex.ru TTL=(3) A=[93.158.134.89]
+Mon 2017-07-03 16:25:46.261: [339639] *  D=mx.yandex.ru TTL=(3) A=[213.180.204.89]
+Mon 2017-07-03 16:25:46.261: [339639] *  D=mx.yandex.ru TTL=(3) A=[213.180.193.89]
+Mon 2017-07-03 16:25:46.261: [339639] *  D=mx.yandex.ru TTL=(3) A=[77.88.21.89]
+Mon 2017-07-03 16:25:46.261: [339639] Randomly picked 87.250.250.89 from list of possible hosts
+Mon 2017-07-03 16:25:46.261: [339639] Attempting SMTP connection to 87.250.250.89:25
+Mon 2017-07-03 16:25:46.261: [339639] Waiting for socket connection...
+Mon 2017-07-03 16:25:46.272: [339639] *  Connection established 10.50.11.63:61399 --> 87.250.250.89:25
+Mon 2017-07-03 16:25:46.272: [339639] Waiting for protocol to start...
+Mon 2017-07-03 16:25:46.301: [339639] <-- 220 mxfront10j.mail.yandex.net (Want to use Yandex.Mail for your domain? Visit http://pdd.yandex.ru)
+Mon 2017-07-03 16:25:46.302: [339639] --> EHLO subscribers.glavkniga.ru
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-mxfront10j.mail.yandex.net
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-8BITMIME
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-PIPELINING
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-SIZE 42991616
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-STARTTLS
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250-DSN
+Mon 2017-07-03 16:25:46.311: [339639] <-- 250 ENHANCEDSTATUSCODES
+Mon 2017-07-03 16:25:46.311: [339639] --> MAIL From:<subscribers@subscribers.glavkniga.ru> SIZE=18445
+Mon 2017-07-03 16:25:46.322: [339639] <-- 250 2.1.0 <subscribers@subscribers.glavkniga.ru> ok
+Mon 2017-07-03 16:25:46.322: [339639] --> RCPT To:<alena-c-2017@yandex.ru>
+Mon 2017-07-03 16:25:46.344: [339639] <-- 250 2.1.5 <alena-c-2017@yandex.ru> recipient ok
+Mon 2017-07-03 16:25:46.344: [339639] --> DATA
+Mon 2017-07-03 16:25:46.352: [339639] <-- 354 Enter mail, end with "." on a line by itself
+Mon 2017-07-03 16:25:46.352: [339639] Sending <f:\mdaemon\queues\remote\pd50000011400.msg> to [87.250.250.89]
+Mon 2017-07-03 16:25:46.352: [339639] Transfer Complete
+Mon 2017-07-03 16:25:47.259: [339639] <-- 250 2.0.0 Ok: queued on mxfront10j.mail.yandex.net as 1499088350-SmwuYPcGPm-Pnuecctd
+Mon 2017-07-03 16:25:47.259: [339639] --> QUIT
+Mon 2017-07-03 16:25:47.264: [339639] <-- 221 2.0.0 Closing connection.
+Mon 2017-07-03 16:25:47.264: [339639] SMTP session successful (Bytes in/out: 500/18588)
+Mon 2017-07-03 16:25:47.264: ----------

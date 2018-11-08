@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.clientservice.ClientServiceBrowse"
+        focusComponent="clientServicesTable"
+        lookupComponent="clientServicesTable"
+        messagesPack="ru.glavkniga.gklients.gui.clientservice">
+    <dsContext>
+        <collectionDatasource id="clientServicesDs"
+                              class="ru.glavkniga.gklients.entity.ClientService"
+                              view="clientService-extended">
+            <query>
+                <![CDATA[select e from gklients$ClientService e where e.service = '3']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clientServicesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clientServicesTable"
+                datasource="clientServicesDs"
+                defaultMode="fts"
+                modeSwitchVisible="true">
+            <properties include=".*"/>
+        </filter>
+
+        <table id="clientServicesTable"
+               width="100%"
+               multiselect="true">
+            <actions>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="client.name"/>
+                <column id="client.email"/>
+                <column id="client.phone"/>
+                <column id="activationDate"/>
+            </columns>
+            <rows datasource="clientServicesDs"/>
+            <rowsCount/>
+            <buttonsPanel>
+                <button id="btUpdate" action="clientServicesTable.refresh"/>
+                <button id="btExcel" action="clientServicesTable.excel"/>
+                <popupButton id="multiselectBtn"
+                             caption="msg://multiselectBtnCap"
+                             enable="false">
+                    <actions>
+                        <action id="makeOntimeSending"
+                                caption="msg://makeOntimeSendingCap"
+                                invoke="onMakeOntimeSending"/>
+                        <action id="subscribeToDistribution"
+                                caption="msg://subscribeToDistributionCap"
+                                invoke="onSubscribeToDistribution"/>
+                    </actions>
+                </popupButton>
+            </buttonsPanel>
+        </table>
+
+    </layout>
+</window>

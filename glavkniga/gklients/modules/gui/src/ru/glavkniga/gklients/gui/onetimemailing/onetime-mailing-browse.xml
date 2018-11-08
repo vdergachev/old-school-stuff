@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.onetimemailing.OnetimeMailingBrowse"
+        focusComponent="onetimeMailingsTable"
+        lookupComponent="onetimeMailingsTable"
+        messagesPack="ru.glavkniga.gklients.gui.onetimemailing">
+    <dsContext>
+        <groupDatasource id="onetimeMailingsDs"
+                         class="ru.glavkniga.gklients.entity.OnetimeMailing"
+                         view="onetimeMailing-withClient">
+            <query>
+                <![CDATA[select e from gklients$OnetimeMailing e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="onetimeMailingsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="onetimeMailingsTable"
+                datasource="onetimeMailingsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="onetimeMailingsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="subject"/>
+                <column id="sendingDate"/>
+                <column id="status"/>
+                <column id="personal"/>
+                <column id="template"/>
+            </columns>
+            <rows datasource="onetimeMailingsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="onetimeMailingsTable.create"/>
+                <button id="editBtn"
+                        action="onetimeMailingsTable.edit"/>
+                <button id="removeBtn"
+                        action="onetimeMailingsTable.remove"/>
+                <button id="refreshBtn"
+                        action="onetimeMailingsTable.refresh"/>
+                <button id="excelBtn"
+                        action="onetimeMailingsTable.excel"/>
+                <button id="statisticsBtn"
+                        caption="msg://statisticsBtnCap"
+                        enable="false"
+                        invoke="onStatisticsBtnClick"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ru.glavkniga.gklients.gui.riz.RizEdit"
+        datasource="rizDs"
+        focusComponent="tabMain"
+        messagesPack="ru.glavkniga.gklients.gui.riz">
+    <dsContext>
+        <datasource id="rizDs"
+                    class="ru.glavkniga.gklients.entity.Riz"
+                    view="riz-view"/>
+        <collectionDatasource id="rizOptionsDs"
+                              class="ru.glavkniga.gklients.entity.Riz"
+                              view="riz-view">
+            <query>
+                <![CDATA[select e from gklients$Riz e where e.podhost IS NULL order by e.number]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <tabSheet id="fieldGroupBox">
+                <tab id="tabMain"
+                     caption="msg://tabMainCap">
+                    <vbox>
+                        <groupBox id="gbMain" caption="msg://gbMainCap"
+                                  width="440px">
+                            <fieldGroup id="fieldGroup1"
+                                        datasource="rizDs">
+                                <column>
+                                    <field id="number"
+                                           width="250px"/>
+                                    <field id="name"
+                                           rows="2"
+                                           width="250px"/>
+                                    <field id="city"
+                                           width="250px"/>
+                                    <field id="region"
+                                           width="250px"/>
+                                    <field id="podhost"
+                                           optionsDatasource="rizOptionsDs"
+                                           width="250px"/>
+                                    <field id="discount"
+                                           width="250px"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                        <groupBox id="gbMail" caption="msg://gbMailCap"
+                                  width="440px">
+                            <fieldGroup id="fieldGroup4"
+                                        datasource="rizDs">
+                                <column width="250px">
+                                    <field id="mailName"
+                                           rows="2"/>
+                                    <field id="mailEmail"/>
+                                    <field id="mailPerson"/>
+
+                                    <field id="mailPhone"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                    </vbox>
+                </tab>
+                <tab id="tabDistr"
+                     caption="msg://tabDistrCap">
+                    <scrollBox height="100%"
+                               orientation="vertical"
+                               spacing="true">
+                        <vbox>
+                            <groupBox id="gb1"
+                                      caption="msg://gbDistr1"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup2_1"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="phone"/>
+                                        <field id="elverEmail"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                            <groupBox id="gb2"
+                                      caption="msg://gbDistr2"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup2_2"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="deliveryAddress"
+                                               rows="2"/>
+                                        <field id="deliveryEmail"
+                                               rows="2"/>
+                                        <field id="deliveryCompany"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                            <groupBox id="gb3"
+                                      caption="msg://gbDistr3"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup2_3"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="orderPerson"
+                                               rows="2"/>
+                                        <field id="orderPhone"/>
+                                        <field id="orderEmail"
+                                               rows="2"/>
+                                        <field id="orderAccountist"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                        </vbox>
+                    </scrollBox>
+                </tab>
+                <tab id="tabPr"
+                     caption="msg://tabPrCap">
+                    <scrollBox height="100%"
+                               orientation="vertical"
+                               spacing="true">
+                        <vbox>
+                            <groupBox id="gb4"
+                                      caption="msg://gbPr1"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup3_1"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="prPerson"
+                                               rows="2"/>
+                                        <field id="prPhone"/>
+                                        <field id="prEmail"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                            <groupBox id="gb5"
+                                      caption="msg://gbPr2"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup3_2"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="distrPerson"
+                                               rows="2"/>
+                                        <field id="distrEmail"
+                                               rows="2"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                            <groupBox id="gb6"
+                                      caption="msg://gbPr3"
+                                      width="440px">
+                                <fieldGroup id="fieldGroup3_3"
+                                            datasource="rizDs">
+                                    <column width="250px">
+                                        <field id="wsName"/>
+                                        <field id="wsPerson"/>
+                                        <field id="wsAddress"
+                                               rows="2"/>
+                                        <field id="wsPhone"/>
+                                        <field id="wsEmail"/>
+                                        <field id="wsWebsite"/>
+                                        <field id="wsTerritory"
+                                               rows="4"/>
+                                    </column>
+                                </fieldGroup>
+                            </groupBox>
+                        </vbox>
+                    </scrollBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

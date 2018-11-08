@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var loginJson = JSON.stringify(
+            {
+                'type': 'LOGIN_CUSTOMER',
+                'sequence_id': 'a29e4fd0-581d-e06b-c837-4f5f4be7dd18',
+                'data': {
+                    'email': 'fpi@bk.ru',
+                    'password': '123123'
+                }
+            });
+
+    var invalidLoginJson = JSON.stringify(
+            {
+                'type': 'LOGIN_CUSTOMER',
+                'sequence_id': '715c13b3-881a-9c97-b853-10be585a9747',
+                'data': {
+                    'email': '123@gmail.com',
+                    'password': 'newPassword'
+                }
+            });
+
+    for (var i = 0; i < 128; i++) {
+        var ws;
+        try {
+            ws = new WebSocket("ws://127.0.0.1:8080/websocket/ws");
+
+            ws.onopen = function () {
+                sendMessage(ws, loginJson);
+            };
+
+            ws.onclose = function () {
+                console.log("Connection closed...");
+            };
+
+            ws.onerror = function (error) {
+                console.log("Error..." + error.message);
+            };
+
+            ws.onmessage = function () {
+                sendMessage(ws, loginJson);
+            }
+
+        } catch (ex) {
+
+        }
+
+    }
+
+    function sendMessage(ws, msg) {
+        waitForSocketConnection(ws, function () {
+            console.log("Connection opened,send a message...");
+            ws.send(msg);
+        });
+    }
+    ;
+
+
+    function waitForSocketConnection(socket, callback) {
+        setTimeout(
+                function () {
+                    if (socket.readyState === 1) {
+                        if (callback !== undefined) {
+                            callback();
+                        }
+                        return;
+                    } else {
+                        waitForSocketConnection(socket, callback);
+                    }
+                }, 5);
+    }
+    ;
+
+
+</script>
+
+</body>
+</html>

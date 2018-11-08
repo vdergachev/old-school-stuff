@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.glavkniga.gklients.gui.clientdistributionsettings.ClientDistributionSettingsBrowse"
+        focusComponent="clientDistributionSettingsesTable"
+        lookupComponent="clientDistributionSettingsesTable"
+        messagesPack="ru.glavkniga.gklients.gui.clientdistributionsettings">
+    <dsContext>
+        <groupDatasource id="clientDistributionSettingsesDs"
+                         class="ru.glavkniga.gklients.entity.ClientDistributionSettings"
+                         view="subscriber-full">
+            <query>
+                <![CDATA[select e from gklients$ClientDistributionSettings e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clientDistributionSettingsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clientDistributionSettingsesTable"
+                datasource="clientDistributionSettingsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clientDistributionSettingsesTable"
+                    aggregatable="true"
+                    textSelectionEnabled="true"
+                    width="100%"
+                    multiselect="true">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+            </actions>
+            <columns>
+                <column id="client"/>
+                <column id="isCompany"/>
+                <column id="isIp"/>
+                <column id="isCivil"/>
+                <column id="isWithWorkers"/>
+                <column id="isWithoutWorkers"/>
+                <column id="isOsno"/>
+                <column id="isUsn"/>
+                <column id="isEnvd"/>
+                <column id="isEshn"/>
+                <column id="isPsn"/>
+            </columns>
+            <rows datasource="clientDistributionSettingsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="clientDistributionSettingsesTable.create"/>
+                <button id="editBtn"
+                        action="clientDistributionSettingsesTable.edit"/>
+                <button id="removeBtn"
+                        action="clientDistributionSettingsesTable.remove"/>
+                <button id="refreshBtn"
+                        action="clientDistributionSettingsesTable.refresh"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

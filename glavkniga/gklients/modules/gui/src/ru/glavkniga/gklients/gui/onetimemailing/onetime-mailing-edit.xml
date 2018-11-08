@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.glavkniga.gklients.gui.onetimemailing.OnetimeMailingEdit"
+        datasource="onetimeMailingDs"
+        focusComponent="subjectField"
+        messagesPack="ru.glavkniga.gklients.gui.onetimemailing">
+    <dsContext>
+        <datasource id="onetimeMailingDs"
+                    class="ru.glavkniga.gklients.entity.OnetimeMailing"
+                    view="onetimeMailing-withClient">
+            <collectionDatasource id="clientsDs"
+                                  property="client"/>
+            <collectionDatasource id="nestedAttachmentDs"
+                                  property="attachments"/>
+        </datasource>
+        <collectionDatasource id="allClientsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from gklients$Client e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="externalClientsDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Client"
+                              refreshMode="NEVER"
+                              view="_local"/>
+        <collectionDatasource id="emailTemplatesDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.EmailTemplate"
+                              view="emailTemplate-view">
+            <query>
+                <![CDATA[select e from gklients$EmailTemplate e 
+where e.emailType = 0]]>
+            </query>
+        </collectionDatasource>
+        <datasource id="mailingStatisticsDs"
+                    class="ru.glavkniga.gklients.entity.MailingStatistics"
+                    view="mailingStatistics-browse"/>
+        <collectionDatasource id="tokensDs"
+                              allowCommit="false"
+                              class="ru.glavkniga.gklients.entity.Token"
+                              view="_local">
+            <query>
+                <![CDATA[select e from gklients$Token e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                modal="true"
+                width="1030"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <groupBox id="gbTokenList"
+                      caption="msg://addresseeListCap"
+                      spacing="true">
+                <scrollBox height="580px"
+                           orientation="vertical"
+                           width="300px">
+                    <tokenList id="addresseeList"
+                               datasource="clientsDs">
+                        <lookup optionsDatasource="allClientsDs"/>
+                    </tokenList>
+                </scrollBox>
+            </groupBox>
+            <vbox spacing="true">
+                <groupBox id="gbMail"
+                          caption="msg://gbEmailCap">
+                    <vbox spacing="true">
+                        <textField id="subjectField"
+                                   caption="msg://subjectLabelMsg"
+                                   datasource="onetimeMailingDs"
+                                   property="subject"
+                                   width="645px"/>
+                        <richTextArea id="bodyField"
+                                      caption="msg://bodyFieldMsg"
+                                      datasource="onetimeMailingDs"
+                                      height="294px"
+                                      property="body"
+                                      width="645px"/>
+                    </vbox>
+                </groupBox>
+                <groupBox id="gbFlags"
+                          caption="msg://gbFlagsCap"
+                          width="667px">
+                    <grid spacing="true">
+                        <columns count="4"/>
+                        <rows>
+                            <row>
+                                <label id="dateLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://dateLabelCap"/>
+                                <dateField id="plannedDateField"
+                                           align="MIDDLE_LEFT"
+                                           datasource="onetimeMailingDs"
+                                           property="sendingDate"
+                                           width="230px"/>
+                            </row>
+                            <row>
+                                <label id="statusLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://statusLabelCap"/>
+                                <lookupField id="statusField"
+                                             align="MIDDLE_LEFT"
+                                             datasource="onetimeMailingDs"
+                                             property="status"
+                                             required="true"
+                                             width="230px"/>
+                            </row>
+                        </rows>
+                    </grid>
+                    <popupView id="attachmentsPopup"
+                               hideOnMouseOut="false"
+                               minimizedValue="msg://attachmentsPopupCap">
+                        <table id="attachmentsTable"
+                               width="600px">
+                            <actions>
+                                <action id="add"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="file.name"/>
+                                <column id="file.size"/>
+                                <column id="file.createDate"/>
+                                <column id="attachmentMethod"/>
+                            </columns>
+                            <rows datasource="nestedAttachmentDs"/>
+                            <rowsCount/>
+                            <buttonsPanel id="buttonsPanel"
+                                          alwaysVisible="true">
+                                <button id="addBtn"
+                                        action="attachmentsTable.add"/>
+                                <button id="removeBtn"
+                                        action="attachmentsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </popupView>
+                </groupBox>
+                <groupBox id="gbTemplate"
+                          caption="msg://gbTemplateCap"
+                          spacing="true"
+                          width="667px">
+                    <hbox spacing="true">
+                        <fieldGroup id="fieldGroup3"
+                                    datasource="onetimeMailingDs"
+                                    height="31px">
+                            <column width="250px">
+                                <field optionsDatasource="emailTemplatesDs"
+                                       property="template"/>
+                            </column>
+                        </fieldGroup>
+                        <popupView id="previewPopup"
+                                   align="MIDDLE_RIGHT"
+                                   hideOnMouseOut="false"
+                                   minimizedValue="msg://previewBtnCap">
+                            <hbox spacing="true">
+                                <label id="labelPreview"
+                                       htmlEnabled="true"/>
+                            </hbox>
+                        </popupView>
+                        <popupView id="tokensPopup"
+                                   hideOnMouseOut="false"
+                                   minimizedValue="msg://tokensPopupCap">
+                            <table id="tokensTable"
+                                   width="800px">
+                                <columns>
+                                    <column id="token"/>
+                                    <column id="description"/>
+                                </columns>
+                                <rows datasource="tokensDs"/>
+                            </table>
+                        </popupView>
+                    </hbox>
+                </groupBox>
+            </vbox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

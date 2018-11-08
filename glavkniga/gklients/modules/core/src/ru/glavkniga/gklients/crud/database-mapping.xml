@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- DESCTIPTION-->
+<!--
+Entity means GKlients Data Model entity
+    class = exact class of synchronizable entity
+
+Table means table in database, where the properties of the entity are stored
+    name means table name
+
+Property means the entity property
+    name means property name
+    field means name of a field in the table where the property value is stored
+-->
+<!--WARNING! Only String properties could be mapped atm -->
+<!--WARNING! Every table must contain id in uuid as a linking field -->
+
+<entityset>
+    <entity class="ru.glavkniga.gklients.entity.Client">
+        <table name="gk_sys_site_user">
+            <property name="id" field="id"/>
+            <property name="email" field="email"/>
+            <property name="isBlocked" field="blocked"/>
+            <property name="passwordHash" field="pass_hash"/>
+        </table>
+        <table name="gk_sys_site_user_data">
+            <property name="id" field="id"/>
+            <property name="name" field="name"/>
+            <property name="password" field="pass"/>
+            <property name="phone" field="phone"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.entity.ClientService">
+        <table name="gk_sys_site_user_services">
+            <property name="client" field="user_id"/>
+            <property name="service" field="service"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.ElverAccess">
+        <table name="gk_sys_site_user_service_1">
+            <property name="client" field="user_id"/>
+            <property name="number" field="number"/>
+            <property name="year" field="year"/>
+            <property name="beginDate" field="date_begin"/>
+            <property name="endDate" field="date_end"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.SeminarAccess">
+        <table name="gk_sys_site_user_service_2">
+            <property name="client" field="user_id"/>
+            <property name="number" field="number"/>
+            <property name="year" field="year"/>
+            <property name="beginDate" field="date_begin"/>
+            <property name="endDate" field="date_end"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.SituationAccess">
+        <table name="gk_sys_site_user_service_3">
+            <property name="client" field="user_id"/>
+            <property name="beginDate" field="date_begin"/>
+            <property name="endDate" field="date_end"/>
+        </table>
+    </entity>
+
+    <entity class="ru.glavkniga.gklients.crudentity.Regkey">
+        <table name="gk_secure_user_regkeys">
+            <property name="email" field="email"/>
+            <property name="regkey" field="regkey"/>
+            <property name="date_activation" field="date_activation"/>
+            <property name="tarif" field="tarif"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.GKNews">
+        <table name="jos_newsline">
+            <property name="siteId" field="id"/>
+            <property name="title" field="title"/>
+            <property name="url" field="full_url"/>
+            <property name="leadText" field="leadtxt"/>
+            <property name="fullText" field="fulltxt"/>
+            <property name="newsDate" field="startstamp"/>
+            <property name="params" field="params"/>
+            <property name="isOther" field="is_other"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.GKNewsImage">
+        <table name="jos_newsline_images">
+            <property name="recordId" field="id"/>
+            <property name="siteId" field="news_id"/>
+            <property name="image" field="filename"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.DailyNewsDistribution">
+        <table name="gk_sys_daily_news_intro">
+            <property name="distributionDate" field="date"/>
+            <property name="introText" field="text"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.crudentity.DateException">
+        <table name="gk_sys_date_exceptions">
+            <property name="siteId" field="id"/>
+            <property name="day" field="date"/>
+            <property name="month" field="mon"/>
+            <property name="year" field="year"/>
+            <property name="status" field="status"/>
+            <property name="region" field="region"/>
+            <property name="note" field="note"/>
+        </table>
+    </entity>
+    <entity class="ru.glavkniga.gklients.entity.ClientDistributionSettings">
+        <table name="gk_sys_user_data">
+            <property name="client" field="id"/>
+            <property name="isCompany" field="sub_company"/>
+            <property name="isIp" field="sub_ip"/>
+            <property name="isCivil" field="sub_civil"/>
+            <property name="isWithWorkers" field="sub_with_workers"/>
+            <property name="isWithoutWorkers" field="sub_without_workers"/>
+            <property name="isOsno" field="sub_osno"/>
+            <property name="isUsn" field="sub_usn"/>
+            <property name="isEnvd" field="sub_envd"/>
+            <property name="isEshn" field="sub_eshd"/>
+            <property name="isPsn" field="sub_psn"/>
+            <property name="marker" field="marker"/>
+        </table>
+    </entity>
+<entity class="ru.glavkniga.gklients.crudentity.SiteExchange">
+    <table name="gk_sys_site_exchange">
+        <property name="id" field="uuid"/>
+        <property name="siteId" field="id"/>   <!-- we don't need it -->
+        <property name="tableName" field="table_name"/>
+        <property name="data" field="data"/>
+        <property name="lastUpdate" field="last_update"/>
+        <property name="status" field="status"/> <!-- we don't need it -->
+        <property name="event" field="event"/>
+    </table>
+</entity>
+</entityset>
